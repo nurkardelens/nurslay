@@ -58,8 +58,6 @@ if (mobileMenuBtn && mobileMenu) {
 }
 
 
-
-
 // --- SCROLL FADE-IN ANIMATIONS ---
 function initScrollAnimations() {
   // add fade-in class to animatable elements
@@ -86,7 +84,7 @@ function initScrollAnimations() {
   });
 
   // stagger grids
-  document.querySelectorAll('.work-grid, .eco-grid, .skills-grid').forEach(el => {
+  document.querySelectorAll('.work-grid, .tweets-grid, .eco-grid, .skills-grid').forEach(el => {
     el.classList.add('stagger');
     el.classList.add('fade-in');
   });

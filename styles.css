@@ -639,16 +639,10 @@ img {
 }
 
 /* --- VIRAL POSTS / TWEET EMBEDS --- */
-.viral-section {
-  padding: 6rem 1.5rem;
-  background: var(--bg-alt);
-}
-
 .tweets-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-bottom: 3rem;
 }
 
 .tweet-embed {
@@ -681,38 +675,6 @@ img {
   padding-top: 0.75rem;
   border-top: 1px dashed var(--card-border);
   margin-top: 0.75rem;
-}
-
-.cta-box {
-  text-align: center;
-  padding: 2rem;
-  background: var(--card-bg);
-  border: 2px dashed var(--card-border);
-  border-radius: var(--radius-lg);
-}
-
-.cta-box p {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.cta-btn {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  padding: 0.8rem 2rem;
-  background: var(--gradient-1);
-  color: #fff;
-  border-radius: var(--radius);
-  transition: all var(--transition);
-}
-
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 105, 180, 0.3);
-  color: #fff;
 }
 
 /* --- ECOSYSTEM --- */
@@ -994,7 +956,6 @@ img {
   .skills-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-
 }
 
 @media (min-width: 768px) {
