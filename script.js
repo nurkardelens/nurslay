@@ -63,7 +63,6 @@ function initScrollAnimations() {
   // add fade-in class to animatable elements
   const animTargets = [
     '.about-grid',
-    '.project-card',
     '.tweet-embed',
     '.eco-card',
     '.skill-group',
@@ -84,7 +83,7 @@ function initScrollAnimations() {
   });
 
   // stagger grids
-  document.querySelectorAll('.work-grid, .tweets-grid, .eco-grid, .skills-grid').forEach(el => {
+  document.querySelectorAll('.tweets-grid, .eco-grid, .skills-grid').forEach(el => {
     el.classList.add('stagger');
     el.classList.add('fade-in');
   });

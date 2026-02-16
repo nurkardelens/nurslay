@@ -537,108 +537,7 @@ img {
   background: var(--highlight);
 }
 
-/* --- WORK / PORTFOLIO --- */
-.work-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-.project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: all var(--transition);
-  position: relative;
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-1);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px var(--card-shadow);
-  border-color: var(--accent-3);
-}
-
-.project-card:hover::before {
-  opacity: 1;
-}
-
-.project-card-inner {
-  padding: 2rem;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-}
-
-.project-title {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-}
-
-.project-desc {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-  line-height: 1.7;
-}
-
-.project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.project-meta strong {
-  color: var(--accent);
-}
-
-.project-link {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: gap var(--transition);
-}
-
-.project-link:hover {
-  gap: 0.6rem;
-}
-
-/* --- VIRAL POSTS / TWEET EMBEDS --- */
+/* --- POV / TWEET EMBEDS --- */
 .tweets-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -941,10 +840,6 @@ img {
 
 /* --- RESPONSIVE --- */
 @media (min-width: 640px) {
-  .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .tweets-grid {
     grid-template-columns: repeat(2, 1fr);
   }
