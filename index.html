@@ -3,435 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="nurslay — Web3 content creator, writer, community builder. portfolio of words, worlds & onchain work.">
-  <meta name="keywords" content="Web3, content creator, DAO, governance, writer, community, blockchain, portfolio">
+  <meta name="description" content="nurslay — web3 writer, community architect, content girlie.">
   <meta name="author" content="nurslay">
-  <meta property="og:title" content="nurslay — writer & web3 creative">
-  <meta property="og:description" content="content. community. onchain culture.">
+  <meta property="og:title" content="nurslay">
+  <meta property="og:description" content="words. vibes. onchain.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="nurslay — writer & web3 creative">
-  <title>nurslay ★ portfolio</title>
+  <title>nurslay ★</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- cursor sparkle canvas -->
   <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
 
-  <!-- nav -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">nurslay ★</a>
-      <div class="nav-links">
-        <a href="#about">about</a>
-        <a href="#work">work</a>
-        <a href="#writing">writing</a>
-        <a href="#ecosystem">ecosystem</a>
-        <a href="#contact">contact</a>
-        <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-          <span class="toggle-icon">☽</span>
-        </button>
-      </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">✦</button>
-    </div>
-  </nav>
-
-  <!-- mobile menu -->
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
-    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
-    <div class="mobile-menu-links">
-      <a href="#about">about</a>
-      <a href="#work">work</a>
-      <a href="#writing">writing</a>
-      <a href="#ecosystem">ecosystem</a>
-      <a href="#contact">contact</a>
-      <button class="dark-mode-toggle" id="darkModeToggleMobile" aria-label="Toggle dark mode">☽ / ☀</button>
-    </div>
+  <!-- floating y2k stickers that drift around -->
+  <div class="floating-stickers" aria-hidden="true">
+    <span class="floater f1">★</span>
+    <span class="floater f2">♡</span>
+    <span class="floater f3">✦</span>
+    <span class="floater f4">☆</span>
+    <span class="floater f5">✧</span>
+    <span class="floater f6">♡</span>
   </div>
 
-  <!-- HERO — slide 1: the intro -->
-  <section class="hero" id="hero" aria-label="Hero introduction">
-    <div class="hero-inner">
-      <div class="hero-sticker" aria-hidden="true">✧ hi ✧</div>
-      <h1 class="hero-title">
-        <span class="hero-line hero-line-1">nurslay</span>
-        <span class="hero-line hero-line-2">hi.</span>
-      </h1>
-      <p class="hero-tagline">writer · web3 creative · community architect</p>
-      <p class="hero-statement">
-        i turn onchain culture into words that matter.<br>
-        content strategy, community vibes & ecosystem storytelling.
-      </p>
-      <div class="hero-cta">
-        <a href="#work" class="btn btn-primary">see my work ↓</a>
-        <a href="#contact" class="btn btn-secondary">let's talk →</a>
+  <!-- nav — minimal -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo">★ nurslay</a>
+    <div class="nav-right">
+      <a href="#about" class="nav-link">about</a>
+      <a href="#work" class="nav-link">work</a>
+      <a href="#writing" class="nav-link">writing</a>
+      <a href="#contact" class="nav-link">say hi</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">☽</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">✦</button>
+  </nav>
+
+  <!-- mobile overlay -->
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close" id="mobClose" aria-label="Close">✕</button>
+    <a href="#about">about</a>
+    <a href="#work">work</a>
+    <a href="#writing">writing</a>
+    <a href="#contact">say hi</a>
+    <button class="theme-btn" id="themeBtnMob" aria-label="Toggle dark mode">☽ / ☀</button>
+  </div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-deco-grid" aria-hidden="true">
+      <span>✦</span><span>♡</span><span>★</span><span>✧</span>
+      <span>☆</span><span>✦</span><span>♡</span><span>★</span>
+      <span>✧</span><span>☆</span><span>✦</span><span>♡</span>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">✧ hi ✧</div>
+      <h1>nurslay</h1>
+      <p class="hero-sub">writer · web3 · community</p>
+      <p class="hero-quote">「 and just like that... she went onchain 」</p>
+      <div class="hero-btns">
+        <a href="#work" class="btn-pill">my work ↓</a>
+        <a href="#contact" class="btn-ghost">let's talk</a>
       </div>
-      <div class="hero-marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>★ web3 ★ content ★ community ★ DAOs ★ governance ★ culture ★ writing ★ research ★ vibes ★ onchain ★ web3 ★ content ★ community ★ DAOs ★ governance ★ culture ★ writing ★ research ★ vibes ★ onchain ★</span>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>★ content ★ vibes ★ DAOs ★ culture ★ writing ★ onchain ★ community ★ content ★ vibes ★ DAOs ★ culture ★ writing ★ onchain ★ community ★ content ★ vibes ★ DAOs ★ culture ★ writing ★ onchain ★ community ★</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-tag">// about</div>
+      <div class="about-layout">
+        <div class="about-left">
+          <h2>the content<br>creator era ✦</h2>
+          <p>
+            it started with a blog post — not a pitch deck.<br>
+            web3 needed better stories. so i wrote them.
+          </p>
+          <p>
+            discord at 3am. governance calls on tuesday.<br>
+            threads, articles, campaigns, community playbooks.<br>
+            i make complex onchain things feel human.
+          </p>
+          <div class="vibe-pills">
+            <span>carrie bradshaw but web3</span>
+            <span>chronically online</span>
+            <span>ur fave DAO's fave writer</span>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="y2k-card">
+            <div class="y2k-header">~ nurslay.eth ~</div>
+            <div class="y2k-body">
+              <p><b>status:</b> building in public</p>
+              <p><b>location:</b> onchain</p>
+              <p><b>mood:</b> writing szn</p>
+            </div>
+            <div class="y2k-footer">★ xoxo ★</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT — the content creator era story -->
-  <section class="section about" id="about" aria-label="About me">
-    <div class="section-inner">
-      <div class="section-label">about me</div>
-      <div class="about-grid">
-        <div class="about-text">
-          <h2 class="about-headline">the content creator era ✦</h2>
-          <div class="about-story">
-            <p class="story-chapter">
-              <span class="chapter-num">chapter 01:</span>
-              it started with a blog post. not a pitch deck, not a whitepaper — just words on a screen
-              and a weird feeling that web3 needed better stories. so i started writing them.
-            </p>
-            <p class="story-chapter">
-              <span class="chapter-num">chapter 02:</span>
-              from discord servers at 3am to DAO governance calls on a tuesday morning —
-              i became the person who could translate complex onchain mechanics into content
-              that actually made people care. threads, articles, campaigns, community playbooks.
-            </p>
-            <p class="story-chapter">
-              <span class="chapter-num">chapter 03:</span>
-              now? i'm the bridge between builders and their audience. content strategy that
-              doesn't feel like marketing. community architecture that doesn't feel forced.
-              writing that hits different because it's real.
-            </p>
-          </div>
-          <div class="about-vibe-check">
-            <span class="vibe-tag">☆ carrie bradshaw but make it web3</span>
-            <span class="vibe-tag">☆ chronically online (affectionate)</span>
-            <span class="vibe-tag">☆ your fave DAO's fave writer</span>
-          </div>
-        </div>
-        <div class="about-card">
-          <div class="card-y2k">
-            <div class="card-header">~ nurslay.eth ~</div>
-            <div class="card-body">
-              <p><strong>status:</strong> building in public</p>
-              <p><strong>location:</strong> onchain</p>
-              <p><strong>mood:</strong> writing szn</p>
-              <p><strong>currently:</strong> crafting narratives for the decentralized future</p>
-            </div>
-            <div class="card-footer">
-              ★ xoxo, nurslay ★
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SELECTED WORK / PORTFOLIO -->
-  <section class="section work" id="work" aria-label="Selected work">
-    <div class="section-inner">
-      <div class="section-label">selected work</div>
-      <h2 class="section-title">the portfolio era ✦</h2>
+  <!-- ═══════════ WORK ═══════════ -->
+  <section class="section alt" id="work">
+    <div class="container">
+      <div class="section-tag">// work</div>
+      <h2 class="section-h2">selected work ✦</h2>
       <div class="work-grid">
-        <!-- project card 1 -->
-        <article class="project-card" data-tags="web3,content,dao">
-          <div class="project-card-inner">
-            <div class="project-tags">
-              <span class="tag">Web3</span>
-              <span class="tag">Content Strategy</span>
-              <span class="tag">DAO</span>
-            </div>
-            <h3 class="project-title">DAO Content Playbook</h3>
-            <p class="project-desc">
-              built a full content strategy framework for a top-50 DAO —
-              from governance recaps to community newsletters that actually got read.
-            </p>
-            <div class="project-meta">
-              <span><strong>role:</strong> content lead</span>
-              <span><strong>tools:</strong> Notion, Mirror, Paragraph</span>
-            </div>
-            <a href="#" class="project-link" aria-label="View DAO Content Playbook">view project →</a>
-          </div>
+        <article class="work-card">
+          <div class="work-card-tags"><span>DAO</span><span>Content</span></div>
+          <h3>DAO Content Playbook</h3>
+          <p>content strategy for a top-50 DAO. governance recaps, newsletters, the whole thing.</p>
+          <div class="work-meta">content lead · Notion, Mirror</div>
+          <a href="#" class="card-link">view →</a>
         </article>
-
-        <!-- project card 2 -->
-        <article class="project-card" data-tags="research,governance">
-          <div class="project-card-inner">
-            <div class="project-tags">
-              <span class="tag">Research</span>
-              <span class="tag">Governance</span>
-            </div>
-            <h3 class="project-title">Governance Research Report</h3>
-            <p class="project-desc">
-              deep-dive research on DAO governance models, voting mechanisms,
-              and delegate accountability. published on Mirror & cited by ecosystem leads.
-            </p>
-            <div class="project-meta">
-              <span><strong>role:</strong> researcher & writer</span>
-              <span><strong>tools:</strong> Dune, Mirror, Google Docs</span>
-            </div>
-            <a href="#" class="project-link" aria-label="View Governance Research Report">view project →</a>
-          </div>
+        <article class="work-card">
+          <div class="work-card-tags"><span>Research</span><span>Governance</span></div>
+          <h3>Governance Deep Dive</h3>
+          <p>research on DAO voting, delegate accountability. published on Mirror.</p>
+          <div class="work-meta">researcher · Dune, Mirror</div>
+          <a href="#" class="card-link">view →</a>
         </article>
-
-        <!-- project card 3 -->
-        <article class="project-card" data-tags="community,web3">
-          <div class="project-card-inner">
-            <div class="project-tags">
-              <span class="tag">Community</span>
-              <span class="tag">Web3</span>
-            </div>
-            <h3 class="project-title">Community Growth Campaign</h3>
-            <p class="project-desc">
-              designed & executed a community onboarding campaign that grew
-              an ecosystem's active contributors by 300% in 3 months.
-            </p>
-            <div class="project-meta">
-              <span><strong>role:</strong> community strategist</span>
-              <span><strong>tools:</strong> Discord, Notion, Coordinape</span>
-            </div>
-            <a href="#" class="project-link" aria-label="View Community Growth Campaign">view project →</a>
-          </div>
+        <article class="work-card">
+          <div class="work-card-tags"><span>Community</span><span>Growth</span></div>
+          <h3>Community Growth ×3</h3>
+          <p>onboarding campaign. 300% contributor growth in 3 months.</p>
+          <div class="work-meta">community lead · Discord, Coordinape</div>
+          <a href="#" class="card-link">view →</a>
         </article>
-
-        <!-- project card 4 -->
-        <article class="project-card" data-tags="content,marketing">
-          <div class="project-card-inner">
-            <div class="project-tags">
-              <span class="tag">Content</span>
-              <span class="tag">Marketing</span>
-            </div>
-            <h3 class="project-title">Protocol Launch Content</h3>
-            <p class="project-desc">
-              end-to-end content for a protocol launch: landing page copy,
-              twitter threads, blog series, and community FAQ docs.
-            </p>
-            <div class="project-meta">
-              <span><strong>role:</strong> content creator</span>
-              <span><strong>tools:</strong> Figma, Notion, Twitter</span>
-            </div>
-            <a href="#" class="project-link" aria-label="View Protocol Launch Content">view project →</a>
-          </div>
+        <article class="work-card">
+          <div class="work-card-tags"><span>Content</span><span>Launch</span></div>
+          <h3>Protocol Launch</h3>
+          <p>landing page, threads, blog series, community docs. end to end.</p>
+          <div class="work-meta">content creator · Figma, Notion</div>
+          <a href="#" class="card-link">view →</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- WRITING / PUBLICATIONS -->
-  <section class="section writing" id="writing" aria-label="Writing and publications">
-    <div class="section-inner">
-      <div class="section-label">writing</div>
-      <h2 class="section-title">the writing era ✦</h2>
-
-      <!-- layout toggle -->
-      <div class="layout-toggle" role="tablist" aria-label="Writing layout options">
-        <button class="layout-btn active" data-layout="editorial" role="tab" aria-selected="true">editorial list</button>
-        <button class="layout-btn" data-layout="cards" role="tab" aria-selected="false">card view</button>
-      </div>
-
-      <!-- editorial list view (default) -->
-      <div class="writing-editorial active" id="writingEditorial">
-        <article class="writing-item">
-          <div class="writing-date">2024.12</div>
-          <div class="writing-info">
-            <h3><a href="#">Why DAOs Need Better Writers, Not More Proposals</a></h3>
-            <p>an essay on the content gap in decentralized governance and why narrative matters more than we think.</p>
-            <span class="writing-pub">Mirror</span>
-          </div>
-        </article>
-        <article class="writing-item">
-          <div class="writing-date">2024.10</div>
-          <div class="writing-info">
-            <h3><a href="#">The Community Manager is Dead. Long Live the Community Architect.</a></h3>
-            <p>a manifesto on evolving the role of community in web3 — from moderation to meaningful participation.</p>
-            <span class="writing-pub">Paragraph</span>
-          </div>
-        </article>
-        <article class="writing-item">
-          <div class="writing-date">2024.08</div>
-          <div class="writing-info">
-            <h3><a href="#">Onchain Culture: Who's Actually Building It?</a></h3>
-            <p>research piece exploring the intersection of content, culture, and crypto-native identity.</p>
-            <span class="writing-pub">Mirror</span>
-          </div>
-        </article>
-        <article class="writing-item">
-          <div class="writing-date">2024.06</div>
-          <div class="writing-info">
-            <h3><a href="#">Governance Recap: Season 4 in Review</a></h3>
-            <p>comprehensive breakdown of governance activity, delegate performance, and treasury decisions.</p>
-            <span class="writing-pub">Notion</span>
-          </div>
-        </article>
-        <article class="writing-item">
-          <div class="writing-date">2024.03</div>
-          <div class="writing-info">
-            <h3><a href="#">Content Strategy for Protocols: A Framework</a></h3>
-            <p>a practical guide for web3 projects looking to build authentic content pipelines.</p>
-            <span class="writing-pub">Blog</span>
-          </div>
-        </article>
-      </div>
-
-      <!-- card view -->
-      <div class="writing-cards" id="writingCards">
-        <article class="writing-card">
-          <div class="writing-card-tag">Mirror · 2024</div>
-          <h3>Why DAOs Need Better Writers, Not More Proposals</h3>
-          <p>an essay on the content gap in decentralized governance.</p>
-          <a href="#">read →</a>
-        </article>
-        <article class="writing-card">
-          <div class="writing-card-tag">Paragraph · 2024</div>
-          <h3>The Community Manager is Dead. Long Live the Community Architect.</h3>
-          <p>a manifesto on evolving the role of community in web3.</p>
-          <a href="#">read →</a>
-        </article>
-        <article class="writing-card">
-          <div class="writing-card-tag">Mirror · 2024</div>
-          <h3>Onchain Culture: Who's Actually Building It?</h3>
-          <p>research on content, culture, and crypto-native identity.</p>
-          <a href="#">read →</a>
-        </article>
-        <article class="writing-card">
-          <div class="writing-card-tag">Notion · 2024</div>
-          <h3>Governance Recap: Season 4 in Review</h3>
-          <p>comprehensive breakdown of governance activity.</p>
-          <a href="#">read →</a>
-        </article>
+  <!-- ═══════════ WRITING ═══════════ -->
+  <section class="section" id="writing">
+    <div class="container">
+      <div class="section-tag">// writing</div>
+      <h2 class="section-h2">the writing era ✦</h2>
+      <div class="writing-list">
+        <a href="#" class="writing-row">
+          <span class="wr-date">2024.12</span>
+          <span class="wr-title">Why DAOs Need Better Writers</span>
+          <span class="wr-pub">Mirror</span>
+          <span class="wr-arrow">→</span>
+        </a>
+        <a href="#" class="writing-row">
+          <span class="wr-date">2024.10</span>
+          <span class="wr-title">The Community Manager is Dead</span>
+          <span class="wr-pub">Paragraph</span>
+          <span class="wr-arrow">→</span>
+        </a>
+        <a href="#" class="writing-row">
+          <span class="wr-date">2024.08</span>
+          <span class="wr-title">Onchain Culture: Who's Building It?</span>
+          <span class="wr-pub">Mirror</span>
+          <span class="wr-arrow">→</span>
+        </a>
+        <a href="#" class="writing-row">
+          <span class="wr-date">2024.06</span>
+          <span class="wr-title">Governance Recap: Season 4</span>
+          <span class="wr-pub">Notion</span>
+          <span class="wr-arrow">→</span>
+        </a>
+        <a href="#" class="writing-row">
+          <span class="wr-date">2024.03</span>
+          <span class="wr-title">Content Strategy for Protocols</span>
+          <span class="wr-pub">Blog</span>
+          <span class="wr-arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ECOSYSTEM CONTRIBUTIONS -->
-  <section class="section ecosystem" id="ecosystem" aria-label="Ecosystem contributions">
-    <div class="section-inner">
-      <div class="section-label">ecosystem</div>
-      <h2 class="section-title">the onchain era ✦</h2>
-      <div class="eco-grid">
-        <div class="eco-card">
-          <div class="eco-icon">◈</div>
-          <h3>DAO Contributions</h3>
-          <p>active contributor & delegate across multiple DAOs. governance proposals, content workstreams, and community initiatives.</p>
-          <div class="eco-tags">
-            <span>Governance</span>
-            <span>Delegate</span>
-            <span>Proposals</span>
-          </div>
+  <!-- ═══════════ ECOSYSTEM ═══════════ -->
+  <section class="section alt" id="ecosystem">
+    <div class="container">
+      <div class="section-tag">// ecosystem</div>
+      <h2 class="section-h2">onchain contributions ✦</h2>
+      <div class="eco-strip">
+        <div class="eco-item">
+          <span class="eco-icon">◈</span>
+          <h3>DAOs</h3>
+          <p>governance, proposals, content workstreams</p>
         </div>
-        <div class="eco-card">
-          <div class="eco-icon">◇</div>
-          <h3>Grants & Funding</h3>
-          <p>received grants for content, research, and community building. turned funding into impact — not just deliverables.</p>
-          <div class="eco-tags">
-            <span>Grants</span>
-            <span>Research</span>
-            <span>Impact</span>
-          </div>
+        <div class="eco-item">
+          <span class="eco-icon">◇</span>
+          <h3>Grants</h3>
+          <p>funded for content, research & community</p>
         </div>
-        <div class="eco-card">
-          <div class="eco-icon">✧</div>
-          <h3>Community Building</h3>
-          <p>built and scaled communities from zero. designed onboarding flows, created engagement frameworks, and fostered culture.</p>
-          <div class="eco-tags">
-            <span>Community</span>
-            <span>Onboarding</span>
-            <span>Culture</span>
-          </div>
+        <div class="eco-item">
+          <span class="eco-icon">✧</span>
+          <h3>Community</h3>
+          <p>built communities from zero. onboarding & culture</p>
         </div>
-        <div class="eco-card">
-          <div class="eco-icon">☆</div>
-          <h3>Content & Research</h3>
-          <p>published research, threads, and long-form content across web3 media platforms. words that moved the needle.</p>
-          <div class="eco-tags">
-            <span>Writing</span>
-            <span>Research</span>
-            <span>Threads</span>
-          </div>
+        <div class="eco-item">
+          <span class="eco-icon">☆</span>
+          <h3>Research</h3>
+          <p>published across web3 media platforms</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS & TOOLS -->
-  <section class="section skills" id="skills" aria-label="Skills and tools">
-    <div class="section-inner">
-      <div class="section-label">skills & tools</div>
-      <h2 class="section-title">the toolkit ✦</h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>content</h3>
-          <ul>
-            <li>content strategy</li>
-            <li>copywriting</li>
-            <li>long-form writing</li>
-            <li>twitter threads</li>
-            <li>newsletter design</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>community</h3>
-          <ul>
-            <li>community architecture</li>
-            <li>discord management</li>
-            <li>onboarding flows</li>
-            <li>engagement strategy</li>
-            <li>event coordination</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>web3</h3>
-          <ul>
-            <li>DAO governance</li>
-            <li>tokenomics basics</li>
-            <li>onchain research</li>
-            <li>ecosystem mapping</li>
-            <li>grant writing</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>tools</h3>
-          <ul>
-            <li>Notion</li>
-            <li>Mirror / Paragraph</li>
-            <li>Dune Analytics</li>
-            <li>Figma</li>
-            <li>Discord / Telegram</li>
-          </ul>
-        </div>
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-center">
+      <div class="section-tag">// say hi</div>
+      <h2>let's make<br>something ✦</h2>
+      <p>content, community, or just vibes.</p>
+      <div class="contact-links">
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">X / twitter</a>
+        <a href="https://mirror.xyz/" target="_blank" rel="noopener noreferrer">mirror</a>
+        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">discord</a>
+        <a href="mailto:hello@nurslay.xyz">email</a>
       </div>
+      <p class="sign-off">★ xoxo, nurslay ★</p>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section contact" id="contact" aria-label="Contact">
-    <div class="section-inner">
-      <div class="section-label">contact</div>
-      <div class="contact-content">
-        <h2 class="contact-headline">let's make something together ✦</h2>
-        <p class="contact-sub">
-          whether it's content, community, or just vibes — i'm always down to chat.<br>
-          slide into my dms or drop me a line.
-        </p>
-        <div class="contact-links">
-          <a href="https://twitter.com/" class="contact-link" target="_blank" rel="noopener noreferrer">twitter / X →</a>
-          <a href="https://mirror.xyz/" class="contact-link" target="_blank" rel="noopener noreferrer">mirror →</a>
-          <a href="https://discord.com/" class="contact-link" target="_blank" rel="noopener noreferrer">discord →</a>
-          <a href="mailto:hello@nurslay.xyz" class="contact-link">email →</a>
-        </div>
-        <div class="contact-sign-off">
-          ★ xoxo, nurslay ★
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer-inner">
-      <p>© 2024 nurslay. made with ♡ & too much screen time.</p>
-      <p class="footer-vibe">「 and just like that... she built a portfolio 」</p>
-    </div>
+  <!-- footer -->
+  <footer class="footer">
+    <p>made with ♡ & too much screen time</p>
+    <p class="footer-quote">「 and just like that... she built a portfolio 」</p>
   </footer>
 
   <script src="script.js"></script>
