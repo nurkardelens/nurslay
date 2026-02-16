@@ -638,146 +638,81 @@ img {
   gap: 0.6rem;
 }
 
-/* --- WRITING --- */
-.layout-toggle {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+/* --- VIRAL POSTS / TWEET EMBEDS --- */
+.viral-section {
+  padding: 6rem 1.5rem;
+  background: var(--bg-alt);
 }
 
-.layout-btn {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: lowercase;
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.layout-btn.active {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.layout-btn:hover:not(.active) {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* editorial list */
-.writing-editorial {
-  display: none;
-}
-
-.writing-editorial.active {
-  display: block;
-}
-
-.writing-item {
+.tweets-grid {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 2rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border);
-  transition: background var(--transition);
-}
-
-.writing-item:hover {
-  background: var(--highlight);
-  margin: 0 -1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: var(--radius);
-}
-
-.writing-date {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  padding-top: 0.2rem;
-}
-
-.writing-info h3 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  margin-bottom: 0.4rem;
-}
-
-.writing-info h3 a {
-  color: var(--text);
-}
-
-.writing-info h3 a:hover {
-  color: var(--accent);
-}
-
-.writing-info p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.writing-pub {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* card view */
-.writing-cards {
-  display: none;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
-.writing-cards.active {
-  display: grid;
-}
-
-.writing-card {
+.tweet-embed {
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 2px solid var(--card-border);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 1rem;
+  box-shadow: 4px 4px 0 var(--accent-3);
   transition: all var(--transition);
+  overflow: hidden;
 }
 
-.writing-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px var(--card-shadow);
+.tweet-embed:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--accent-3);
+  border-color: var(--accent);
 }
 
-.writing-card-tag {
+.tweet-embed .twitter-tweet {
+  margin: 0 auto !important;
+}
+
+.tweet-label {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--accent);
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+  color: var(--accent);
+  text-align: center;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--card-border);
+  margin-top: 0.75rem;
 }
 
-.writing-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
+.cta-box {
+  text-align: center;
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 2px dashed var(--card-border);
+  border-radius: var(--radius-lg);
 }
 
-.writing-card p {
+.cta-box p {
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
-.writing-card a {
+.cta-btn {
+  display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  padding: 0.8rem 2rem;
+  background: var(--gradient-1);
+  color: #fff;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 105, 180, 0.3);
+  color: #fff;
 }
 
 /* --- ECOSYSTEM --- */
@@ -1048,7 +983,7 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .writing-cards {
+  .tweets-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1060,9 +995,6 @@ img {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .writing-item {
-    grid-template-columns: 100px 1fr;
-  }
 }
 
 @media (min-width: 768px) {

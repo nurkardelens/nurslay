@@ -58,30 +58,6 @@ if (mobileMenuBtn && mobileMenu) {
 }
 
 
-// --- WRITING LAYOUT TOGGLE ---
-const layoutBtns = document.querySelectorAll('.layout-btn');
-const editorialView = document.getElementById('writingEditorial');
-const cardsView = document.getElementById('writingCards');
-
-layoutBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    layoutBtns.forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-
-    const layout = btn.dataset.layout;
-    if (layout === 'editorial') {
-      editorialView.classList.add('active');
-      cardsView.classList.remove('active');
-    } else {
-      cardsView.classList.add('active');
-      editorialView.classList.remove('active');
-    }
-  });
-});
 
 
 // --- SCROLL FADE-IN ANIMATIONS ---
@@ -90,8 +66,7 @@ function initScrollAnimations() {
   const animTargets = [
     '.about-grid',
     '.project-card',
-    '.writing-item',
-    '.writing-card',
+    '.tweet-embed',
     '.eco-card',
     '.skill-group',
     '.contact-content',
