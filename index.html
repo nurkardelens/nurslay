@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="nurslay — web3 writer, community architect, content girlie.">
-  <meta name="author" content="nurslay">
-  <meta property="og:title" content="nurslay">
-  <meta property="og:description" content="words. vibes. onchain.">
+  <meta name="description" content="nurslay — web3 content creator, community builder, chronically online crypto girlie.">
+  <meta name="keywords" content="Web3, Crypto, Content Creator, Marketing, Community, Turkish Crypto, ITU Blockchain">
+  <meta name="author" content="Nur Kardelen Solmaz">
+  <meta property="og:title" content="nurslay — web3 content creator">
+  <meta property="og:description" content="chronically online crypto girl making memes, building communities & writing about defi">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@nurkardelens">
   <title>nurslay ★</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +20,7 @@
 <body>
   <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
 
-  <!-- floating y2k stickers that drift around -->
+  <!-- floating y2k stickers -->
   <div class="floating-stickers" aria-hidden="true">
     <span class="floater f1">★</span>
     <span class="floater f2">♡</span>
@@ -28,13 +30,14 @@
     <span class="floater f6">♡</span>
   </div>
 
-  <!-- nav — minimal -->
+  <!-- nav -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <a href="#" class="nav-logo">★ nurslay</a>
     <div class="nav-right">
       <a href="#about" class="nav-link">about</a>
       <a href="#work" class="nav-link">work</a>
-      <a href="#writing" class="nav-link">writing</a>
+      <a href="#viral" class="nav-link">viral</a>
+      <a href="#web3" class="nav-link">web3</a>
       <a href="#contact" class="nav-link">say hi</a>
       <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">☽</button>
     </div>
@@ -46,7 +49,8 @@
     <button class="mob-close" id="mobClose" aria-label="Close">✕</button>
     <a href="#about">about</a>
     <a href="#work">work</a>
-    <a href="#writing">writing</a>
+    <a href="#viral">viral</a>
+    <a href="#web3">web3</a>
     <a href="#contact">say hi</a>
     <button class="theme-btn" id="themeBtnMob" aria-label="Toggle dark mode">☽ / ☀</button>
   </div>
@@ -58,19 +62,40 @@
       <span>☆</span><span>✦</span><span>♡</span><span>★</span>
       <span>✧</span><span>☆</span><span>✦</span><span>♡</span>
     </div>
+
+    <div class="marquee marquee-top" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>★ chronically online since 2021 ★ 1.6M impressions ★ ITU blockchain girlie ★ building in web3 ★ chronically online since 2021 ★ 1.6M impressions ★ ITU blockchain girlie ★ building in web3 ★</span>
+      </div>
+    </div>
+
     <div class="hero-content">
       <div class="hero-badge">✧ hi ✧</div>
       <h1>nurslay</h1>
-      <p class="hero-sub">writer · web3 · community</p>
-      <p class="hero-quote">「 and just like that... she went onchain 」</p>
+      <p class="hero-sub" id="heroSub">content creator · community builder · crypto girlie</p>
+
+      <div class="hero-stats">
+        <div class="stat-box"><span class="stat-num">216K</span><span class="stat-label">impressions</span></div>
+        <div class="stat-box"><span class="stat-num">4.7%</span><span class="stat-label">engagement</span></div>
+        <div class="stat-box"><span class="stat-num">4500+</span><span class="stat-label">community</span></div>
+      </div>
+
+      <div class="hero-tags">
+        <span>creatoor</span>
+        <span>community-builder</span>
+        <span>thinkooor</span>
+        <span>degen</span>
+      </div>
+
       <div class="hero-btns">
-        <a href="#work" class="btn-pill">my work ↓</a>
-        <a href="#contact" class="btn-ghost">let's talk</a>
+        <a href="https://x.com/nurkardelens" target="_blank" rel="noopener noreferrer" class="btn-pill">@nurkardelens ↗</a>
+        <a href="#work" class="btn-ghost">see my work ↓</a>
       </div>
     </div>
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-inner">
-        <span>★ content ★ vibes ★ DAOs ★ culture ★ writing ★ onchain ★ community ★ content ★ vibes ★ DAOs ★ culture ★ writing ★ onchain ★ community ★ content ★ vibes ★ DAOs ★ culture ★ writing ★ onchain ★ community ★</span>
+
+    <div class="marquee marquee-bottom" aria-hidden="true">
+      <div class="marquee-inner marquee-reverse">
+        <span>♡ memes ♡ defi ♡ community ♡ content ♡ vibes ♡ governance ♡ culture ♡ memes ♡ defi ♡ community ♡ content ♡ vibes ♡ governance ♡ culture ♡</span>
       </div>
     </div>
   </section>
@@ -83,29 +108,40 @@
         <div class="about-left">
           <h2>the content<br>creator era ✦</h2>
           <p>
-            it started with a blog post — not a pitch deck.<br>
-            web3 needed better stories. so i wrote them.
+            hey! i'm nur kardelen — nurslay on the internet.<br>
+            web3 content creator, community builder & marketing girlie based in istanbul.
           </p>
           <p>
-            discord at 3am. governance calls on tuesday.<br>
-            threads, articles, campaigns, community playbooks.<br>
-            i make complex onchain things feel human.
+            building at <b>pharus</b> & <b>knidos labs</b>.
+            formerly led <b>ITU blockchain</b> — turkey's largest blockchain community (4500+ members).
+            organized <b>ETH kampus</b> during devconnect 2023 (1700+ attendees ft. vitalik).
           </p>
           <div class="vibe-pills">
+            <span>chronically online (affectionate)</span>
             <span>carrie bradshaw but web3</span>
-            <span>chronically online</span>
-            <span>ur fave DAO's fave writer</span>
+            <span>ur fave crypto girl's fave crypto girl</span>
           </div>
         </div>
         <div class="about-right">
           <div class="y2k-card">
-            <div class="y2k-header">~ nurslay.eth ~</div>
+            <div class="y2k-header">~ nurslay.exe ~</div>
             <div class="y2k-body">
               <p><b>status:</b> building in public</p>
-              <p><b>location:</b> onchain</p>
-              <p><b>mood:</b> writing szn</p>
+              <p><b>location:</b> istanbul / onchain</p>
+              <p><b>mood:</b> content szn</p>
+              <p><b>studying:</b> geophysics @ ITU</p>
             </div>
             <div class="y2k-footer">★ xoxo ★</div>
+          </div>
+          <div class="y2k-card" style="margin-top:1rem;max-width:280px">
+            <div class="y2k-header">~ content_dna.json ~</div>
+            <div class="y2k-body">
+              <div class="vibe-bar"><span>memes</span><div class="bar"><div class="fill" style="width:30%"></div></div><span>30%</span></div>
+              <div class="vibe-bar"><span>education</span><div class="bar"><div class="fill" style="width:30%"></div></div><span>30%</span></div>
+              <div class="vibe-bar"><span>engagement</span><div class="bar"><div class="fill" style="width:20%"></div></div><span>20%</span></div>
+              <div class="vibe-bar"><span>defi</span><div class="bar"><div class="fill" style="width:15%"></div></div><span>15%</span></div>
+              <div class="vibe-bar"><span>chaos</span><div class="bar"><div class="fill" style="width:5%"></div></div><span>5%</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -115,106 +151,155 @@
   <!-- ═══════════ WORK ═══════════ -->
   <section class="section alt" id="work">
     <div class="container">
-      <div class="section-tag">// work</div>
+      <div class="section-tag">// my content creator era</div>
       <h2 class="section-h2">selected work ✦</h2>
       <div class="work-grid">
-        <article class="work-card">
-          <div class="work-card-tags"><span>DAO</span><span>Content</span></div>
-          <h3>DAO Content Playbook</h3>
-          <p>content strategy for a top-50 DAO. governance recaps, newsletters, the whole thing.</p>
-          <div class="work-meta">content lead · Notion, Mirror</div>
-          <a href="#" class="card-link">view →</a>
+
+        <article class="work-card featured">
+          <div class="work-card-badge">built from zero</div>
+          <div class="work-card-tags"><span>Content</span><span>Community</span><span>Growth</span></div>
+          <h3>pharus</h3>
+          <p>built entire X presence from scratch. educational content that converts research into threads. all social, trend participation, community growth.</p>
+          <div class="work-highlights">
+            <span><b>216K</b> impressions</span>
+            <span><b>multi-platform</b></span>
+          </div>
+          <div class="work-meta">content creator & community manager · jan 2024 - present</div>
+          <div class="work-links">
+            <a href="https://x.com/thepharus/status/1966859029378199719" target="_blank" class="card-link">viral post (216K) →</a>
+            <a href="https://x.com/thepharus/status/1965385572618567851" target="_blank" class="card-link">report launch (153K) →</a>
+          </div>
         </article>
+
         <article class="work-card">
-          <div class="work-card-tags"><span>Research</span><span>Governance</span></div>
-          <h3>Governance Deep Dive</h3>
-          <p>research on DAO voting, delegate accountability. published on Mirror.</p>
-          <div class="work-meta">researcher · Dune, Mirror</div>
-          <a href="#" class="card-link">view →</a>
+          <div class="work-card-tags"><span>Marketing</span><span>AI</span><span>DeFi</span></div>
+          <h3>knidos labs</h3>
+          <p>gtm strategy, interactive campaigns, user onboarding for web3 products. testnet campaigns & influencer partnerships.</p>
+          <div class="work-highlights">
+            <span><b>mini games</b> campaigns</span>
+            <span><b>6.9K+</b> avg impressions</span>
+          </div>
+          <div class="work-meta">product marketing associate · may 2025 - present</div>
+          <div class="work-links">
+            <a href="https://x.com/knidosxyz/status/2014029339998785584" target="_blank" class="card-link">mini game →</a>
+            <a href="https://x.com/knidosxyz/status/2011490079521345900" target="_blank" class="card-link">guild launch →</a>
+          </div>
         </article>
+
         <article class="work-card">
-          <div class="work-card-tags"><span>Community</span><span>Growth</span></div>
-          <h3>Community Growth ×3</h3>
-          <p>onboarding campaign. 300% contributor growth in 3 months.</p>
-          <div class="work-meta">community lead · Discord, Coordinape</div>
-          <a href="#" class="card-link">view →</a>
+          <div class="work-card-badge">biggest achievement</div>
+          <div class="work-card-tags"><span>Leadership</span><span>Community</span><span>Events</span></div>
+          <h3>ITU blockchain</h3>
+          <p>led turkey's first & largest blockchain student community. 15+ events, major sponsorships (polygon, starknet).</p>
+          <div class="work-highlights">
+            <span><b>4500+</b> members</span>
+            <span><b>2500+</b> new (one campaign)</span>
+          </div>
+          <div class="work-meta">president · 2023 - 2024</div>
         </article>
+
         <article class="work-card">
-          <div class="work-card-tags"><span>Content</span><span>Launch</span></div>
-          <h3>Protocol Launch</h3>
-          <p>landing page, threads, blog series, community docs. end to end.</p>
-          <div class="work-meta">content creator · Figma, Notion</div>
-          <a href="#" class="card-link">view →</a>
+          <div class="work-card-badge">epic event</div>
+          <div class="work-card-tags"><span>Events</span><span>Logistics</span><span>International</span></div>
+          <h3>ETH kampus & notdevcon</h3>
+          <p>1700+ person conference during devconnect 2023 ft. vitalik buterin. managed hacker house for 40 international students.</p>
+          <div class="work-highlights">
+            <span><b>1700+</b> attendees</span>
+            <span><b>sold out</b></span>
+            <span><b>vitalik</b></span>
+          </div>
+          <div class="work-meta">event organizer · nov 2023</div>
         </article>
+
+        <article class="work-card">
+          <div class="work-card-tags"><span>Journalism</span><span>Podcasting</span></div>
+          <h3>genesis news</h3>
+          <p>weekly blockchain news for turkish audience. hosted 11 twitter spaces on web3 developments.</p>
+          <div class="work-meta">journalist & podcaster · 2022 - 2023</div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card-tags"><span>Personal Brand</span><span>Memes</span></div>
+          <h3>@nurkardelens</h3>
+          <p>1.6K engaged followers. memes + education + community. 4.7% engagement rate (way above average).</p>
+          <div class="work-highlights">
+            <span><b>1.6M</b> impressions</span>
+            <span><b>4.7%</b> engagement</span>
+          </div>
+          <div class="work-links">
+            <a href="https://x.com/nurkardelens/status/2017959401848496262" target="_blank" class="card-link">starknet meme →</a>
+            <a href="https://x.com/nurkardelens/status/1936747411474436214" target="_blank" class="card-link">uniswap generator →</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ WRITING ═══════════ -->
-  <section class="section" id="writing">
+  <!-- ═══════════ VIRAL POSTS ═══════════ -->
+  <section class="section" id="viral">
     <div class="container">
-      <div class="section-tag">// writing</div>
-      <h2 class="section-h2">the writing era ✦</h2>
-      <div class="writing-list">
-        <a href="#" class="writing-row">
-          <span class="wr-date">2024.12</span>
-          <span class="wr-title">Why DAOs Need Better Writers</span>
-          <span class="wr-pub">Mirror</span>
-          <span class="wr-arrow">→</span>
-        </a>
-        <a href="#" class="writing-row">
-          <span class="wr-date">2024.10</span>
-          <span class="wr-title">The Community Manager is Dead</span>
-          <span class="wr-pub">Paragraph</span>
-          <span class="wr-arrow">→</span>
-        </a>
-        <a href="#" class="writing-row">
-          <span class="wr-date">2024.08</span>
-          <span class="wr-title">Onchain Culture: Who's Building It?</span>
-          <span class="wr-pub">Mirror</span>
-          <span class="wr-arrow">→</span>
-        </a>
-        <a href="#" class="writing-row">
-          <span class="wr-date">2024.06</span>
-          <span class="wr-title">Governance Recap: Season 4</span>
-          <span class="wr-pub">Notion</span>
-          <span class="wr-arrow">→</span>
-        </a>
-        <a href="#" class="writing-row">
-          <span class="wr-date">2024.03</span>
-          <span class="wr-title">Content Strategy for Protocols</span>
-          <span class="wr-pub">Blog</span>
-          <span class="wr-arrow">→</span>
-        </a>
+      <div class="section-tag">// the tweets that hit different</div>
+      <h2 class="section-h2">viral posts ✦</h2>
+      <div class="tweets-grid">
+        <div class="tweet-embed">
+          <blockquote class="twitter-tweet" data-theme="dark">
+            <a href="https://x.com/thepharus/status/1966859029378199719"></a>
+          </blockquote>
+          <div class="tweet-label">216K impressions</div>
+        </div>
+        <div class="tweet-embed">
+          <blockquote class="twitter-tweet" data-theme="dark">
+            <a href="https://x.com/thepharus/status/1965385572618567851"></a>
+          </blockquote>
+          <div class="tweet-label">153K impressions</div>
+        </div>
+        <div class="tweet-embed">
+          <blockquote class="twitter-tweet" data-theme="dark">
+            <a href="https://x.com/nurkardelens/status/2017959401848496262"></a>
+          </blockquote>
+          <div class="tweet-label">starknet valentine's meme</div>
+        </div>
+        <div class="tweet-embed">
+          <blockquote class="twitter-tweet" data-theme="dark">
+            <a href="https://x.com/knidosxyz/status/2014029339998785584"></a>
+          </blockquote>
+          <div class="tweet-label">mini game campaign</div>
+        </div>
+      </div>
+      <div class="cta-box">
+        <p>want more? check the full timeline</p>
+        <a href="https://x.com/nurkardelens" target="_blank" class="btn-pill">follow @nurkardelens ↗</a>
       </div>
     </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </section>
 
-  <!-- ═══════════ ECOSYSTEM ═══════════ -->
-  <section class="section alt" id="ecosystem">
+  <!-- ═══════════ WEB3 ECOSYSTEM ═══════════ -->
+  <section class="section alt" id="web3">
     <div class="container">
       <div class="section-tag">// ecosystem</div>
-      <h2 class="section-h2">onchain contributions ✦</h2>
+      <h2 class="section-h2">web3 stuff ✦</h2>
       <div class="eco-strip">
         <div class="eco-item">
           <span class="eco-icon">◈</span>
-          <h3>DAOs</h3>
-          <p>governance, proposals, content workstreams</p>
+          <h3>currently</h3>
+          <p>pharus · knidos labs · optimism TR</p>
         </div>
         <div class="eco-item">
           <span class="eco-icon">◇</span>
-          <h3>Grants</h3>
-          <p>funded for content, research & community</p>
+          <h3>community</h3>
+          <p>ITU blockchain · ETH kampus · 4500+ members</p>
         </div>
         <div class="eco-item">
           <span class="eco-icon">✧</span>
-          <h3>Community</h3>
-          <p>built communities from zero. onboarding & culture</p>
+          <h3>protocols</h3>
+          <p>starknet · hyperlane · polygon · optimism</p>
         </div>
         <div class="eco-item">
           <span class="eco-icon">☆</span>
-          <h3>Research</h3>
-          <p>published across web3 media platforms</p>
+          <h3>skills</h3>
+          <p>content · community · memes · localization · events</p>
         </div>
       </div>
     </div>
@@ -225,12 +310,16 @@
     <div class="container contact-center">
       <div class="section-tag">// say hi</div>
       <h2>let's make<br>something ✦</h2>
-      <p>content, community, or just vibes.</p>
+      <p>dm me for content collabs, community building, or just to vibe</p>
       <div class="contact-links">
-        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">X / twitter</a>
-        <a href="https://mirror.xyz/" target="_blank" rel="noopener noreferrer">mirror</a>
-        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">discord</a>
-        <a href="mailto:hello@nurslay.xyz">email</a>
+        <a href="https://x.com/nurkardelens" target="_blank" rel="noopener noreferrer">X / twitter</a>
+        <a href="https://www.tiktok.com/@urturkishcryptofren" target="_blank" rel="noopener noreferrer">tiktok</a>
+        <a href="https://t.me/nurkardelens" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="mailto:snurkardelen@gmail.com">email</a>
+      </div>
+      <div class="availability">
+        <span class="status-dot"></span>
+        chronically online & available for collabs
       </div>
       <p class="sign-off">★ xoxo, nurslay ★</p>
     </div>
@@ -238,8 +327,15 @@
 
   <!-- footer -->
   <footer class="footer">
-    <p>made with ♡ & too much screen time</p>
-    <p class="footer-quote">「 and just like that... she built a portfolio 」</p>
+    <p>made with ♡ & too much caffeine by nurslay</p>
+    <p class="footer-quote">「 and just like that... she went onchain 」</p>
+    <div class="footer-links">
+      <a href="https://x.com/nurkardelens" target="_blank">twitter</a>
+      <span>·</span>
+      <a href="https://www.tiktok.com/@urturkishcryptofren" target="_blank">tiktok</a>
+      <span>·</span>
+      <a href="mailto:snurkardelen@gmail.com">email</a>
+    </div>
   </footer>
 
   <script src="script.js"></script>

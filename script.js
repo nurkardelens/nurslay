@@ -58,18 +58,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // === SCROLL REVEAL ===
 function initReveals() {
   const targets = [
-    '.hero-content', '.hero-badge',
+    '.hero-content', '.hero-badge', '.hero-stats', '.hero-tags',
     '.about-layout', '.about-left h2', '.y2k-card',
-    '.work-card', '.writing-row',
+    '.work-card', '.tweet-embed',
     '.eco-item', '.contact-center',
-    '.section-h2', '.section-tag'
+    '.section-h2', '.section-tag',
+    '.cta-box', '.availability'
   ];
   targets.forEach(sel => {
     document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'));
   });
 
   // stagger grids
-  document.querySelectorAll('.work-grid, .eco-strip, .writing-list').forEach(el => {
+  document.querySelectorAll('.work-grid, .eco-strip, .tweets-grid').forEach(el => {
     el.classList.add('stagger-in');
     el.classList.add('reveal');
   });
