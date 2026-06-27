@@ -5,6 +5,7 @@ import { MapPin, CalendarPlus } from "lucide-react";
 import { copy } from "@/lib/copy";
 import { events, config } from "@/lib/weddingData";
 import { downloadICS } from "@/utils/ics";
+import BotanicalCorner from "./BotanicalCorner";
 import Divider from "./Divider";
 
 export default function Events() {
@@ -16,13 +17,15 @@ export default function Events() {
   const ankaraEvents = visibleEvents.filter((e) => e.city === "Ankara");
 
   return (
-    <section id="events" className="py-16 md:py-24 px-4">
+    <section id="events" className="relative py-16 md:py-24 px-4 overflow-hidden">
+      <BotanicalCorner position="top-left" parallaxSpeed={0.1} />
+      <BotanicalCorner position="bottom-right" parallaxSpeed={0.14} />
       <Divider />
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="max-w-3xl mx-auto"
       >
         <h2 className="font-heading text-2xl md:text-3xl text-espresso text-center mb-12">
@@ -32,11 +35,17 @@ export default function Events() {
         {/* Afyonkarahisar */}
         {afyonEvents.length > 0 && (
           <div className="mb-10">
-            <h3 className="font-heading text-xl text-espresso mb-6 text-center">
+            <motion.h3
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="font-heading text-xl text-espresso mb-6 text-center"
+            >
               {copy.events.cityAfyon}
-            </h3>
-            {afyonEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+            </motion.h3>
+            {afyonEvents.map((event, i) => (
+              <EventCard key={event.id} event={event} index={i} />
             ))}
           </div>
         )}
@@ -44,12 +53,18 @@ export default function Events() {
         {/* Ankara */}
         {ankaraEvents.length > 0 && (
           <div>
-            <h3 className="font-heading text-xl text-espresso mb-6 text-center">
+            <motion.h3
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="font-heading text-xl text-espresso mb-6 text-center"
+            >
               {copy.events.cityAnkara}
-            </h3>
+            </motion.h3>
             <div className="space-y-6">
-              {ankaraEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
+              {ankaraEvents.map((event, i) => (
+                <EventCard key={event.id} event={event} index={i} />
               ))}
             </div>
           </div>
@@ -59,21 +74,30 @@ export default function Events() {
   );
 }
 
-function EventCard({ event }: { event: (typeof events)[0] }) {
+function EventCard({ event, index }: { event: (typeof events)[0]; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className={`relative bg-white/50 backdrop-blur-sm rounded-2xl border p-6 md:p-8 mb-6 ${
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={`relative bg-white/50 backdrop-blur-sm rounded-2xl border p-6 md:p-8 mb-6 overflow-hidden ${
         event.isMainEvent ? "border-terracotta/30 shadow-md" : "border-sand/40"
       }`}
     >
+      {/* Gold shimmer line at top */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
       {event.badge && (
-        <span className="absolute -top-3 left-6 bg-terracotta text-white text-xs font-body px-3 py-1 rounded-full">
+        <motion.span
+          className="absolute -top-3 left-6 bg-terracotta text-white text-xs font-body px-3 py-1 rounded-full shadow-sm"
+          initial={{ y: -10, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+        >
           {event.badge}
-        </span>
+        </motion.span>
       )}
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -98,23 +122,27 @@ function EventCard({ event }: { event: (typeof events)[0] }) {
 
         <div className="flex gap-3 md:flex-col">
           {event.mapQuery && (
-            <a
+            <motion.a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.mapQuery)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 bg-terracotta text-white rounded-full text-sm font-body hover:bg-clay transition-colors min-h-[44px]"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               <MapPin size={14} />
               {copy.events.directionsBtn}
-            </a>
+            </motion.a>
           )}
-          <button
+          <motion.button
             onClick={() => downloadICS(event)}
             className="flex items-center gap-2 px-4 py-2.5 border border-terracotta text-terracotta rounded-full text-sm font-body hover:bg-terracotta/5 transition-colors min-h-[44px]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <CalendarPlus size={14} />
             {copy.events.calendarBtn}
-          </button>
+          </motion.button>
         </div>
       </div>
     </motion.div>

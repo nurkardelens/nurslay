@@ -54,7 +54,7 @@ export default function Gallery() {
       setUploaderName("");
       setTimeout(() => setUploadSuccess(false), 3000);
     } catch {
-      // silently fail — upload will be retried
+      // silently fail
     }
     setUploading(false);
     if (fileRef.current) fileRef.current.value = "";
@@ -62,14 +62,15 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="relative py-16 md:py-24 px-4 overflow-hidden">
-      <BotanicalCorner position="top-right" className="opacity-10" />
+      <BotanicalCorner position="top-right" parallaxSpeed={0.15} />
+      <BotanicalCorner position="bottom-left" parallaxSpeed={0.1} />
       <Divider />
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="max-w-4xl mx-auto"
       >
         <h2 className="font-heading text-2xl md:text-3xl text-espresso text-center mb-8">
@@ -81,14 +82,18 @@ export default function Gallery() {
           {placeholderPhotos.map((photo, i) => (
             <motion.div
               key={photo.id}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="aspect-[3/4] bg-blush/20 rounded-2xl border border-sand/40 flex items-center justify-center cursor-pointer hover:shadow-md transition-shadow overflow-hidden"
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ scale: 1.03, y: -4 }}
+              className="aspect-[3/4] bg-blush/20 rounded-2xl border border-sand/40 flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow overflow-hidden relative group"
               onClick={() => setLightboxIndex(i)}
             >
-              <div className="text-center">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-sand/10 group-hover:to-terracotta/5 transition-colors" />
+              {/* Gold shimmer on top */}
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="text-center relative z-10">
                 <Camera size={24} className="text-mocha/20 mx-auto mb-2" />
                 <span className="text-mocha/30 text-xs font-body">
                   Fotoğraf eklenecek
@@ -99,7 +104,13 @@ export default function Gallery() {
         </div>
 
         {/* Guest upload */}
-        <div className="max-w-md mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-md mx-auto text-center"
+        >
           <h3 className="font-heading text-xl text-espresso mb-2">
             {copy.gallery.uploadTitle}
           </h3>
@@ -125,25 +136,31 @@ export default function Gallery() {
               id="photo-upload"
             />
 
-            <button
+            <motion.button
               onClick={() => {
                 if (!uploaderName.trim()) return;
                 fileRef.current?.click();
               }}
               disabled={uploading || !uploaderName.trim()}
               className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-terracotta text-white rounded-full font-body text-sm hover:bg-clay transition-colors disabled:opacity-60 min-h-[44px]"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Upload size={16} />
               {uploading ? "Yükleniyor..." : copy.gallery.uploadBtn}
-            </button>
+            </motion.button>
 
             {uploadSuccess && (
-              <p className="text-sage text-sm font-body">
+              <motion.p
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-sage text-sm font-body"
+              >
                 Fotoğrafınız yüklendi, teşekkürler! 🤍
-              </p>
+              </motion.p>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Guest photos wall */}
         <div className="mt-12 text-center">
@@ -163,20 +180,26 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-espresso/80 backdrop-blur-sm flex items-center justify-center p-4"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-espresso/80 backdrop-blur-md flex items-center justify-center p-4"
             onClick={() => setLightboxIndex(null)}
           >
             <button
-              className="absolute top-4 right-4 text-white/80 hover:text-white"
+              className="absolute top-4 right-4 text-white/80 hover:text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setLightboxIndex(null)}
             >
               <X size={28} />
             </button>
-            <div className="bg-blush/30 rounded-2xl w-full max-w-lg aspect-[3/4] flex items-center justify-center">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-blush/30 rounded-2xl w-full max-w-lg aspect-[3/4] flex items-center justify-center"
+            >
               <span className="text-white/50 font-body text-sm">
                 Fotoğraf eklenecek
               </span>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
