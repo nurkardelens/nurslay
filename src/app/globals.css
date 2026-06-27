@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #F6F0E6;
+  --sand: #E9DCC8;
+  --blush: #E7CFC0;
+  --terracotta: #B5754F;
+  --clay: #8C5A3C;
+  --sage: #97A085;
+  --olive: #7C8466;
+  --espresso: #4A3526;
+  --mocha: #6B5544;
+  --gold: #C9A66B;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-blush: var(--blush);
+  --color-terracotta: var(--terracotta);
+  --color-clay: var(--clay);
+  --color-sage: var(--sage);
+  --color-olive: var(--olive);
+  --color-espresso: var(--espresso);
+  --color-mocha: var(--mocha);
+  --color-gold: var(--gold);
+  --font-display: "Pinyon Script", cursive;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Jost", sans-serif;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--mocha);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--espresso);
+  font-family: var(--font-heading);
+}
+
+::selection {
+  background-color: var(--blush);
+  color: var(--espresso);
+}
+
+/* Paper grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blush);
+}

@@ -1,0 +1,115 @@
+export const copy = {
+  hero: {
+    topLabel: "Evleniyoruz",
+    names: "Büşra & İlhan",
+    dateLine: "1 Ağustos 2026 · Ankara",
+    subLine: "Kına Gecemiz · 25 Temmuz · Afyonkarahisar",
+    tagline: "Hayatımın güneşi ol, hep ☀️",
+    scrollCue: "Aşağı kaydır",
+  },
+  countdown: {
+    title: "Büyük Güne Sayılı Günler",
+    days: "Gün",
+    hours: "Saat",
+    minutes: "Dakika",
+    seconds: "Saniye",
+  },
+  story: {
+    title: "Hikâyemiz",
+    intro:
+      "[Her şeyin nasıl başladığını buraya yazın — kısa ve içten birkaç cümle.]",
+    milestones: [
+      { label: "İlk Tanışma", date: "[Tarih]", description: "[Açıklama]" },
+      { label: "İlk Buluşma", date: "[Tarih]", description: "[Açıklama]" },
+      { label: "Evlilik Teklifi", date: "[Tarih]", description: "[Açıklama]" },
+      { label: "Söz / Nişan", date: "[Tarih]", description: "[Açıklama]" },
+      { label: "Düğün", date: "1 Ağustos 2026", description: "Büyük gün! 🤍" },
+    ],
+  },
+  events: {
+    title: "Programımız",
+    cityAfyon: "📍 Afyonkarahisar",
+    cityAnkara: "📍 Ankara",
+    directionsBtn: "Yol Tarifi",
+    calendarBtn: "Takvime Ekle",
+  },
+  location: {
+    title: "Lokasyon & Ulaşım",
+    travelNote:
+      "Kına gecemiz Afyonkarahisar'da, düğünümüz ise Ankara'da gerçekleşecek. Her iki güne de katılacak misafirlerimiz için yaklaşık 3 saatlik bir yol bulunuyor.",
+    accommodationTitle: "Konaklama Önerileri",
+    accommodationContent:
+      "[Afyon ve Ankara için otel önerilerinizi buraya ekleyin.]",
+    airportNote:
+      "Ankara'ya uçakla gelecek misafirlerimiz için en yakın havalimanı: Esenboğa.",
+  },
+  gallery: {
+    title: "Galeri",
+    uploadTitle: "Anılarını Paylaş",
+    uploadDesc: "Bu güzel günden bir kareni bizimle paylaş 🤍",
+    uploadBtn: "Fotoğraf Yükle",
+    guestWallTitle: "Misafir Anıları",
+  },
+  rsvp: {
+    title: "Katılım Bildir",
+    intro:
+      "Bu özel günümüzde aramızda olmanız bizim için çok değerli. Lütfen katılım durumunuzu paylaşın.",
+    nameLabel: "Ad Soyad",
+    contactLabel: "Telefon veya E-posta (isteğe bağlı)",
+    eventsLabel: "Hangi etkinliklere katılacaksınız?",
+    kinaOption: "Kına — 25 Temmuz, Afyonkarahisar",
+    nikahOption: "Nikah & Kokteyl — 1 Ağustos, Ankara",
+    gelinAlmaOption: "Gelin Alma — 1 Ağustos, Ankara",
+    guestCountLabel: "Kaç kişi geleceksiniz?",
+    kidsLabel: "Çocuklu katılım?",
+    kidsYes: "Evet",
+    kidsNo: "Hayır",
+    kidsCountLabel: "Kaç çocuk?",
+    notesLabel: "Not / Özel istek (isteğe bağlı)",
+    guestbookCheckbox: "Dilek defterine de yazmak istiyorum",
+    submitBtn: "Katılımımı Gönder",
+    submitting: "Gönderiliyor...",
+    successMsg: "Teşekkürler! Sizi aramızda görmek için sabırsızlanıyoruz 🤍",
+    errorMsg: "Bir şeyler ters gitti, lütfen tekrar deneyin.",
+    counter: (count: number) => `${count} kişi aramızda olacak`,
+  },
+  guestbook: {
+    title: "Dilek Defteri",
+    intro:
+      "Bize bir dileğinizi, bir anınızı ya da güzel bir temenninizi bırakın 🤍",
+    nameLabel: "Adınız",
+    messageLabel: "Mesajınız",
+    submitBtn: "Dileğini Bırak",
+    submitting: "Gönderiliyor...",
+    successMsg: "Dileğiniz için teşekkürler 🤍",
+    errorMsg: "Bir şeyler ters gitti, lütfen tekrar deneyin.",
+  },
+  album: {
+    title: "Düğün Albümü",
+    description: "Düğünümüzden tüm fotoğraflar burada.",
+    button: "Tüm Düğün Fotoğrafları →",
+    qrNote: "Karekodu okutarak albüme ulaşabilirsiniz.",
+  },
+  closing: {
+    title: "Sizi Bekliyoruz",
+    line: "Mutluluğumuzu sizlerle paylaşmaktan büyük mutluluk duyacağız.",
+  },
+  memory: {
+    heroSubtitle: "Evlendik! 🤍 1 Ağustos 2026",
+    counter: (days: number) => `${days} gündür evliyiz`,
+    thankYou:
+      "Bu güzel günde yanımızda olduğunuz için tüm kalbimizle teşekkür ederiz. Sizlerle daha güzeldi. 🤍",
+    rsvpClosed: "Etkinliğimiz tamamlandı — katılımınız için teşekkürler.",
+  },
+  nav: {
+    home: "Ana Sayfa",
+    countdown: "Geri Sayım",
+    story: "Hikâyemiz",
+    events: "Program",
+    location: "Lokasyon",
+    gallery: "Galeri",
+    rsvp: "Katılım",
+    guestbook: "Dilek Defteri",
+    album: "Albüm",
+  },
+};
