@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
-import OurStory from "@/components/OurStory";
 import Events from "@/components/Events";
 import Location from "@/components/Location";
 import Gallery from "@/components/Gallery";
@@ -46,7 +45,6 @@ export default function Home() {
           <MusicToggle />
           <Hero />
           <Countdown />
-          <OurStory />
           <Events />
           <Location />
           <Gallery />

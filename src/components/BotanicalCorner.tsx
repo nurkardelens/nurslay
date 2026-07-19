@@ -7,12 +7,14 @@ interface BotanicalCornerProps {
   position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   className?: string;
   parallaxSpeed?: number;
+  variant?: "default" | "lush" | "light";
 }
 
 export default function BotanicalCorner({
   position,
   className = "",
   parallaxSpeed = 0.15,
+  variant = "default",
 }: BotanicalCornerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -36,10 +38,12 @@ export default function BotanicalCorner({
     "bottom-right": "bottom-0 right-0",
   };
 
+  const isLight = variant === "light";
+
   return (
     <motion.div
       ref={ref}
-      className={`absolute ${positions[position]} pointer-events-none w-36 h-36 md:w-56 md:h-56 ${className}`}
+      className={`absolute ${positions[position]} pointer-events-none w-48 h-48 md:w-72 md:h-72 lg:w-80 lg:h-80 ${className}`}
       style={{
         y: yParallax,
         scaleX: mirrorX,
@@ -50,75 +54,89 @@ export default function BotanicalCorner({
       viewport={{ once: true, margin: "100px" }}
       transition={{ duration: 1.2 }}
     >
-      {/* Layer 1: Palm fan (back, slow sway) */}
+      {/* Layer 1: Large leaves (back) */}
       <motion.div
         className="absolute inset-0"
         animate={{ rotate: [-1.5, 1.5, -1.5] }}
-        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
       >
         <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
-          <path d="M5 185Q50 150 90 90Q65 135 25 170Z" fill="var(--olive)" opacity="0.12" />
-          <path d="M15 190Q65 140 105 75Q80 125 40 175Z" fill="var(--sage)" opacity="0.10" />
-          <path d="M10 180Q40 150 65 100Q45 135 20 170Z" fill="var(--olive)" opacity="0.08" />
-          {/* Fan veins */}
-          <path d="M10 185Q45 155 80 100" stroke="var(--olive)" strokeWidth="0.4" opacity="0.15" fill="none" />
-          <path d="M18 188Q55 148 90 90" stroke="var(--sage)" strokeWidth="0.3" opacity="0.12" fill="none" />
+          <path d="M5 195Q30 150 60 100Q35 75 20 40Q40 80 65 90Q85 50 100 15Q90 60 78 95Q100 85 130 60Q105 90 82 105Q95 130 80 170Q75 135 65 115Q50 140 25 180Z" fill={isLight ? "#c8d4be" : "var(--olive)"} opacity={isLight ? "0.35" : "0.25"} />
+          <path d="M15 190Q40 140 75 85Q55 65 35 30Q55 70 80 78Q95 40 115 5Q105 50 90 85Q115 70 145 50Q120 80 95 100Q110 125 95 165Q88 130 78 110Q60 135 35 175Z" fill={isLight ? "#b8c8ae" : "var(--sage)"} opacity={isLight ? "0.30" : "0.20"} />
+          {/* Leaf veins */}
+          <path d="M20 185Q50 130 85 75" stroke={isLight ? "#a0b590" : "var(--olive)"} strokeWidth="0.6" opacity={isLight ? "0.30" : "0.20"} fill="none" />
+          <path d="M35 180Q60 135 90 85" stroke={isLight ? "#a0b590" : "var(--sage)"} strokeWidth="0.5" opacity={isLight ? "0.25" : "0.15"} fill="none" />
         </svg>
       </motion.div>
 
-      {/* Layer 2: Pampas grass (middle, medium sway) */}
+      {/* Layer 2: Pampas + stems (mid) */}
       <motion.div
         className="absolute inset-0"
         animate={{ rotate: [1, -1.5, 1] }}
-        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }}
+        transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut", delay: 0.5 }}
       >
         <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
-          {/* Main stem */}
-          <path d="M25 190Q35 130 30 65Q32 40 25 10" stroke="var(--sand)" strokeWidth="1.5" opacity="0.5" fill="none" />
-          {/* Plume shapes */}
-          <ellipse cx="25" cy="35" rx="8" ry="20" fill="var(--sand)" opacity="0.15" transform="rotate(-5 25 35)" />
-          <ellipse cx="22" cy="30" rx="6" ry="18" fill="var(--blush)" opacity="0.10" transform="rotate(-8 22 30)" />
-          <ellipse cx="28" cy="40" rx="7" ry="16" fill="var(--sand)" opacity="0.12" transform="rotate(3 28 40)" />
+          <path d="M30 195Q38 130 35 65Q37 35 30 5" stroke={isLight ? "#e0d5c0" : "var(--sand)"} strokeWidth="2" opacity={isLight ? "0.50" : "0.55"} fill="none" />
+          <ellipse cx="30" cy="30" rx="12" ry="28" fill={isLight ? "#e5ddd0" : "var(--sand)"} opacity={isLight ? "0.30" : "0.25"} transform="rotate(-5 30 30)" />
+          <ellipse cx="26" cy="25" rx="9" ry="24" fill={isLight ? "#d8c8b8" : "var(--blush)"} opacity={isLight ? "0.25" : "0.20"} transform="rotate(-8 26 25)" />
+          <ellipse cx="34" cy="38" rx="10" ry="22" fill={isLight ? "#e5ddd0" : "var(--sand)"} opacity={isLight ? "0.22" : "0.18"} transform="rotate(4 34 38)" />
           {/* Side wisps */}
-          <path d="M30 60Q40 45 48 30" stroke="var(--sand)" strokeWidth="0.6" opacity="0.2" fill="none" />
-          <path d="M28 55Q20 42 15 28" stroke="var(--blush)" strokeWidth="0.5" opacity="0.15" fill="none" />
-          {/* Secondary stem */}
-          <path d="M40 190Q48 140 42 80Q44 55 38 25" stroke="var(--sage)" strokeWidth="0.8" opacity="0.3" fill="none" />
-          <ellipse cx="38" cy="50" rx="5" ry="14" fill="var(--sage)" opacity="0.08" transform="rotate(-3 38 50)" />
+          <path d="M35 65Q50 45 60 25" stroke={isLight ? "#e0d5c0" : "var(--sand)"} strokeWidth="0.8" opacity={isLight ? "0.30" : "0.25"} fill="none" />
+          <path d="M32 55Q22 38 15 18" stroke={isLight ? "#d8c8b8" : "var(--blush)"} strokeWidth="0.7" opacity={isLight ? "0.25" : "0.20"} fill="none" />
+          {/* Second stem */}
+          <path d="M50 195Q56 145 52 85Q54 55 48 20" stroke={isLight ? "#b8c8ae" : "var(--sage)"} strokeWidth="1.2" opacity={isLight ? "0.40" : "0.35"} fill="none" />
+          <ellipse cx="48" cy="45" rx="7" ry="18" fill={isLight ? "#b8c8ae" : "var(--sage)"} opacity={isLight ? "0.18" : "0.12"} transform="rotate(-3 48 45)" />
+          {/* Third delicate stem */}
+          <path d="M65 195Q70 155 65 110Q68 85 62 50" stroke={isLight ? "#c8d4be" : "var(--olive)"} strokeWidth="0.7" opacity={isLight ? "0.30" : "0.25"} fill="none" />
         </svg>
       </motion.div>
 
-      {/* Layer 3: Roses/flowers (front, faster sway) */}
+      {/* Layer 3: Roses & flowers (front) */}
       <motion.div
         className="absolute inset-0"
-        animate={{ rotate: [0.5, -2, 0.5] }}
-        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
+        animate={{ rotate: [0.5, -1.5, 0.5] }}
+        transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 1 }}
       >
         <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
-          {/* Main rose */}
-          <circle cx="55" cy="140" r="12" fill="var(--terracotta)" opacity="0.20" />
-          <circle cx="52" cy="137" r="8" fill="var(--blush)" opacity="0.25" />
-          <circle cx="56" cy="135" r="4" fill="var(--terracotta)" opacity="0.30" />
-          {/* Petal details */}
-          <path d="M48 132Q52 128 58 130Q54 126 48 132Z" fill="var(--terracotta)" opacity="0.15" />
-          <path d="M60 136Q64 130 62 138Q66 134 60 136Z" fill="var(--blush)" opacity="0.18" />
+          {/* Large main rose */}
+          <circle cx="60" cy="130" r="18" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.35" : "0.30"} />
+          <circle cx="56" cy="126" r="13" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.40" : "0.35"} />
+          <circle cx="60" cy="123" r="8" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.35" : "0.30"} />
+          <circle cx="58" cy="121" r="4" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.40" : "0.35"} />
+          {/* Rose petals detail */}
+          <path d="M48 120Q55 112 65 118Q58 108 48 120Z" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.25" : "0.20"} />
+          <path d="M68 124Q75 115 72 128Q78 120 68 124Z" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.30" : "0.25"} />
+          <path d="M50 135Q44 128 52 125Q42 130 50 135Z" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.20" : "0.18"} />
+
+          {/* Medium rose */}
+          <circle cx="85" cy="155" r="12" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.35" : "0.30"} />
+          <circle cx="82" cy="152" r="8" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.30" : "0.25"} />
+          <circle cx="84" cy="150" r="4.5" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.35" : "0.30"} />
 
           {/* Small bud */}
-          <circle cx="70" cy="160" r="6" fill="var(--terracotta)" opacity="0.15" />
-          <circle cx="68" cy="158" r="3.5" fill="var(--blush)" opacity="0.20" />
+          <circle cx="40" cy="105" r="7" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.28" : "0.22"} />
+          <circle cx="38" cy="103" r="4" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.32" : "0.28"} />
 
-          {/* Tiny accent flower */}
-          <circle cx="35" cy="120" r="4" fill="var(--blush)" opacity="0.18" />
-          <circle cx="34" cy="119" r="2" fill="var(--terracotta)" opacity="0.15" />
+          {/* Tiny accent flowers */}
+          <circle cx="100" cy="140" r="5" fill={isLight ? "#d8b8a8" : "var(--blush)"} opacity={isLight ? "0.25" : "0.22"} />
+          <circle cx="98" cy="138" r="2.5" fill={isLight ? "#e0c0b0" : "var(--sand)"} opacity={isLight ? "0.30" : "0.20"} />
+          <circle cx="75" cy="175" r="4" fill={isLight ? "#c09080" : "var(--terracotta)"} opacity={isLight ? "0.20" : "0.18"} />
+
+          {/* Gold accent dots */}
+          <circle cx="95" cy="130" r="1.5" fill="var(--gold)" opacity={isLight ? "0.30" : "0.25"} />
+          <circle cx="48" cy="115" r="1" fill="var(--gold)" opacity={isLight ? "0.25" : "0.20"} />
+          <circle cx="90" cy="165" r="1.2" fill="var(--gold)" opacity={isLight ? "0.22" : "0.18"} />
 
           {/* Leaves */}
-          <ellipse cx="68" cy="145" rx="14" ry="4" fill="var(--sage)" opacity="0.15" transform="rotate(-25 68 145)" />
-          <ellipse cx="42" cy="150" rx="12" ry="3.5" fill="var(--olive)" opacity="0.12" transform="rotate(-40 42 150)" />
-          <ellipse cx="75" cy="168" rx="10" ry="3" fill="var(--sage)" opacity="0.10" transform="rotate(15 75 168)" />
+          <ellipse cx="78" cy="138" rx="18" ry="5" fill={isLight ? "#b8c8ae" : "var(--sage)"} opacity={isLight ? "0.30" : "0.22"} transform="rotate(-25 78 138)" />
+          <ellipse cx="42" cy="145" rx="16" ry="4.5" fill={isLight ? "#a0b090" : "var(--olive)"} opacity={isLight ? "0.25" : "0.18"} transform="rotate(-40 42 145)" />
+          <ellipse cx="90" cy="168" rx="14" ry="4" fill={isLight ? "#b8c8ae" : "var(--sage)"} opacity={isLight ? "0.25" : "0.18"} transform="rotate(15 90 168)" />
+          <ellipse cx="55" cy="155" rx="12" ry="3.5" fill={isLight ? "#a0b090" : "var(--olive)"} opacity={isLight ? "0.20" : "0.15"} transform="rotate(-15 55 155)" />
 
-          {/* Stem for rose */}
-          <path d="M55 152Q52 165 55 185" stroke="var(--olive)" strokeWidth="0.8" opacity="0.2" fill="none" />
-          <path d="M70 166Q68 178 72 192" stroke="var(--sage)" strokeWidth="0.6" opacity="0.15" fill="none" />
+          {/* Stems */}
+          <path d="M60 148Q56 168 60 195" stroke={isLight ? "#a0b090" : "var(--olive)"} strokeWidth="1.2" opacity={isLight ? "0.30" : "0.25"} fill="none" />
+          <path d="M85 167Q82 180 86 195" stroke={isLight ? "#b8c8ae" : "var(--sage)"} strokeWidth="0.9" opacity={isLight ? "0.25" : "0.20"} fill="none" />
+          <path d="M40 112Q38 125 42 145" stroke={isLight ? "#a0b090" : "var(--olive)"} strokeWidth="0.8" opacity={isLight ? "0.25" : "0.18"} fill="none" />
         </svg>
       </motion.div>
     </motion.div>

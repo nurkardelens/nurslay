@@ -7,7 +7,6 @@ import { copy } from "@/lib/copy";
 const sections = [
   { id: "hero", label: copy.nav.home },
   { id: "countdown", label: copy.nav.countdown },
-  { id: "story", label: copy.nav.story },
   { id: "events", label: copy.nav.events },
   { id: "location", label: copy.nav.location },
   { id: "gallery", label: copy.nav.gallery },

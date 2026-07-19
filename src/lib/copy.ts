@@ -14,18 +14,6 @@ export const copy = {
     minutes: "Dakika",
     seconds: "Saniye",
   },
-  story: {
-    title: "Hikâyemiz",
-    intro:
-      "[Her şeyin nasıl başladığını buraya yazın — kısa ve içten birkaç cümle.]",
-    milestones: [
-      { label: "İlk Tanışma", date: "[Tarih]", description: "[Açıklama]" },
-      { label: "İlk Buluşma", date: "[Tarih]", description: "[Açıklama]" },
-      { label: "Evlilik Teklifi", date: "[Tarih]", description: "[Açıklama]" },
-      { label: "Söz / Nişan", date: "[Tarih]", description: "[Açıklama]" },
-      { label: "Düğün", date: "1 Ağustos 2026", description: "Büyük gün! 🤍" },
-    ],
-  },
   events: {
     title: "Programımız",
     cityAfyon: "📍 Afyonkarahisar",
@@ -37,9 +25,6 @@ export const copy = {
     title: "Lokasyon & Ulaşım",
     travelNote:
       "Kına gecemiz Afyonkarahisar'da, düğünümüz ise Ankara'da gerçekleşecek. Her iki güne de katılacak misafirlerimiz için yaklaşık 3 saatlik bir yol bulunuyor.",
-    accommodationTitle: "Konaklama Önerileri",
-    accommodationContent:
-      "[Afyon ve Ankara için otel önerilerinizi buraya ekleyin.]",
     airportNote:
       "Ankara'ya uçakla gelecek misafirlerimiz için en yakın havalimanı: Esenboğa.",
   },
@@ -104,7 +89,6 @@ export const copy = {
   nav: {
     home: "Ana Sayfa",
     countdown: "Geri Sayım",
-    story: "Hikâyemiz",
     events: "Program",
     location: "Lokasyon",
     gallery: "Galeri",
