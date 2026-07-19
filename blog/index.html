@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="nurslay's blog — essays on content, culture, and creating online.">
+  <title>blog posts — nurslay ★</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff5f9;
+      --bg-alt: #ffe8f0;
+      --text: #1a1a2e;
+      --text-muted: #6b6b8d;
+      --accent: #ff69b4;
+      --accent-2: #e040fb;
+      --accent-3: #ff9ec6;
+      --accent-4: #c471f5;
+      --border: #f0d4e0;
+      --card-bg: #fff;
+      --card-border: #ffc0d9;
+      --card-shadow: rgba(255,105,180,0.1);
+      --nav-bg: rgba(255,245,249,0.9);
+      --font-display: 'Courier Prime', 'Courier New', monospace;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0d0d1a;
+      --bg-alt: #161629;
+      --text: #f0e6ef;
+      --text-muted: #a89db8;
+      --border: #2a2a4a;
+      --card-bg: #1a1a30;
+      --card-border: #3a2a4a;
+      --card-shadow: rgba(196,113,245,0.15);
+      --nav-bg: rgba(13,13,26,0.92);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+    .nav-logo:hover { text-decoration: none; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); text-decoration: none; }
+    .dark-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PAGE */
+    .page { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* HEADER */
+    .blog-header {
+      padding: 72px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+    .blog-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+    .blog-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .blog-header h1 .pop { color: var(--accent); }
+    .blog-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 480px;
+    }
+
+    /* POST CARDS */
+    .posts { display: flex; flex-direction: column; gap: 0; }
+
+    .post-card {
+      display: block;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.2s;
+      color: var(--text);
+    }
+    .post-card:hover { text-decoration: none; }
+    .post-card:hover .post-title { color: var(--accent); }
+    .post-card:hover { transform: translateX(4px); }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .post-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      background: rgba(255,105,180,0.08);
+      border: 1px solid rgba(255,105,180,0.2);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .post-read {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-left: auto;
+    }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .post-excerpt {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .post-arrow {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* EMPTY STATE */
+    .more-soon {
+      padding: 48px 0 80px;
+      text-align: center;
+    }
+    .more-soon p {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .more-soon .star { color: var(--accent); font-size: 1.2rem; display: block; margin-bottom: 12px; }
+
+    /* FOOTER */
+    .foot {
+      border-top: 1px solid var(--border);
+      padding: 36px 1.5rem;
+      text-align: center;
+    }
+    .foot-inner { max-width: 760px; margin: 0 auto; }
+    .foot .sig { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--accent); margin-bottom: 6px; }
+    .foot .sub { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 1px; }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .blog-header { padding: 48px 0 36px; }
+      .post-read { display: none; }
+      .nav-links a:not(.keep) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">nurslay ★</a>
+    <div class="nav-links">
+      <a href="../index.html#about">about</a>
+      <a href="../index.html#pov">pov</a>
+      <a href="../index.html#ecosystem">ecosystem</a>
+      <a href="../blog/" class="active keep">blog</a>
+      <a href="../index.html#contact">contact</a>
+      <button class="dark-toggle" id="themeToggle" aria-label="Toggle dark mode">☽</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <header class="blog-header fade-in">
+    <div class="blog-eyebrow">✧ nurslay · words</div>
+    <h1>blog <span class="pop">posts.</span></h1>
+    <p>essays, breakdowns & things i learned the hard way. i consume a lot — this is how i give it back. ★</p>
+  </header>
+
+  <div class="posts">
+
+    <a href="create-as-much-as-consume.html" class="post-card fade-in">
+      <div class="post-meta">
+        <span class="post-tag">content strategy</span>
+        <span class="post-date">jul 2026</span>
+        <span class="post-read">12 min read</span>
+      </div>
+      <div class="post-title">i want to create as much as i consume</div>
+      <p class="post-excerpt">i was stuck in a consumption loop for months. consuming content about content. saving hooks about writing hooks. here's how i broke the cycle — and turned 4 videos into something real.</p>
+      <span class="post-arrow">read post →</span>
+    </a>
+
+  </div>
+
+  <div class="more-soon fade-in">
+    <span class="star">★</span>
+    <p>more posts coming soon</p>
+  </div>
+
+</div>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="sig">★ xoxo, nurslay ★</div>
+    <div class="sub">words & worlds · 2026</div>
+  </div>
+</footer>
+
+<script>
+  // theme sync with main site
+  const saved = localStorage.getItem('nurslay-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('nurslay-theme', 'light');
+      toggle.textContent = '☽';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('nurslay-theme', 'dark');
+      toggle.textContent = '☀';
+    }
+  });
+
+  // fade in on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

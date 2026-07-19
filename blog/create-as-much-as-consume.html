@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>i want to create as much as i consume — nurslay</title>
+<meta name="description" content="i was stuck in a consumption loop for months. here's how i broke it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --text: #e8e8e8;
+    --muted: #777;
+    --accent: #ff6b9d;
+    --accent2: #c084fc;
+    --accent3: #67e8f9;
+    --card-bg: #111;
+    --card-border: #1e1e1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+
+  /* BACK NAV */
+  .back-nav {
+    border-bottom: 1px solid var(--card-border);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .back-nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); text-decoration: none; }
+  .back-nav .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+  .back-nav .logo:hover { text-decoration: none; }
+
+  /* MARQUEE */
+  .marquee-bar {
+    overflow: hidden;
+    border-bottom: 1px solid var(--card-border);
+    padding: 12px 0;
+  }
+  .marquee-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+    gap: 48px;
+  }
+  .marquee-track span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    flex-shrink: 0;
+  }
+  .marquee-track em { color: var(--accent); font-style: normal; }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 48px;
+  }
+  .hero-sparkle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: up 0.5s ease forwards 0.2s;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: up 0.6s ease forwards 0.35s;
+  }
+  .hero h1 .pop {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    opacity: 0;
+    animation: up 0.5s ease forwards 0.55s;
+  }
+  .hero-meta span::before { content: '★ '; color: var(--accent); }
+  @keyframes up {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* CHAPTERS */
+  .chapter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 72px 0 40px;
+  }
+  .chapter-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: var(--accent2);
+    opacity: 0.2;
+    line-height: 1;
+  }
+  .chapter-line { flex: 1; height: 1px; background: var(--card-border); }
+  .chapter-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  /* PROSE */
+  .prose p {
+    font-size: 1.05rem;
+    color: #bbb;
+    margin-bottom: 24px;
+  }
+  .prose p strong { color: var(--text); font-weight: 500; }
+  .prose .era-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text);
+    margin: 44px 0 28px;
+    letter-spacing: -0.5px;
+  }
+  .prose .era-title .pop { color: var(--accent); }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+  .callout-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+  .callout p { font-size: 0.92rem; color: #aaa; margin-bottom: 0; line-height: 1.7; }
+  .callout p strong { color: var(--accent); font-weight: 600; }
+
+  /* VIDEO CARDS */
+  .vid-card {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .vid-card:hover { border-color: var(--accent); transform: translateX(3px); }
+  .vid-card .icon {
+    width: 38px; height: 38px;
+    background: rgba(255,107,157,0.08);
+    border: 1px solid rgba(255,107,157,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .vid-card .info { flex: 1; min-width: 0; }
+  .vid-card .title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vid-card .sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* FRAMEWORK */
+  .framework {
+    background: linear-gradient(135deg, rgba(192,132,252,0.04), rgba(255,107,157,0.04));
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 36px 32px;
+    margin: 36px 0;
+  }
+  .framework h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 22px;
+    color: var(--text);
+  }
+  .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+  .step:last-child { margin-bottom: 0; }
+  .step-n {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--accent);
+    min-width: 24px;
+    padding-top: 1px;
+  }
+  .step-t { font-size: 0.92rem; color: #aaa; line-height: 1.65; }
+  .step-t strong { color: var(--text); font-weight: 500; }
+
+  /* QUOTE */
+  .quote {
+    border-left: 2px solid var(--accent2);
+    padding: 6px 0 6px 24px;
+    margin: 36px 0;
+  }
+  .quote p {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 8px !important;
+  }
+  .quote .src {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* PILLS */
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; }
+  .pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 7px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--card-border);
+    color: var(--muted);
+    background: var(--card-bg);
+  }
+  .pill.on { border-color: var(--accent); color: var(--accent); background: rgba(255,107,157,0.06); }
+  .pill.dead { text-decoration: line-through; opacity: 0.4; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 36px 0; }
+  .stat {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 22px 16px;
+    text-align: center;
+  }
+  .stat .n { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--accent2); }
+  .stat .l {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+
+  /* CTA */
+  .cta { text-align: center; padding: 72px 0 60px; }
+  .cta h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .cta h2 .pop {
+    background: linear-gradient(135deg, var(--accent3), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta p { color: var(--muted); font-size: 0.95rem; max-width: 440px; margin: 0 auto; }
+
+  /* FOOTER */
+  .foot { border-top: 1px solid var(--card-border); padding: 36px 0; text-align: center; }
+  .foot .sig { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--accent); margin-bottom: 6px; }
+  .foot .sub { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 1px; }
+  .foot .back-to-blog {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .foot .back-to-blog:hover { color: var(--accent); text-decoration: none; }
+
+  /* FADE */
+  .fade { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade.vis { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: 1fr; }
+    .hero { min-height: 70vh; padding: 60px 0 36px; }
+    .framework { padding: 24px 18px; }
+    .wrap { padding: 0 18px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="back-nav">
+  <div class="wrap">
+    <a href="../blog/" class="back-link">← blog posts</a>
+    <a href="../index.html" class="logo">nurslay ★</a>
+  </div>
+</nav>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>★ hooks ★ storytelling ★ <em>social media</em> ★ strategy ★ content ★ create ★ consume ★ hooks ★ storytelling ★ <em>social media</em> ★ strategy ★ content ★ create ★ consume</span>
+    <span>★ hooks ★ storytelling ★ <em>social media</em> ★ strategy ★ content ★ create ★ consume ★ hooks ★ storytelling ★ <em>social media</em> ★ strategy ★ content ★ create ★ consume</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-sparkle">✧ nurslay · full guide ✧</div>
+  <h1>i want to create<br>as much as i <span class="pop">consume</span></h1>
+  <div class="hero-meta">
+    <span>12 min read</span>
+    <span>content strategy</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<div class="prose">
+
+<section class="fade">
+  <p>ok here's the thing nobody wants to admit.</p>
+  <p>we all scroll 4+ hours a day. we save posts, screenshot tweets, add videos to "watch later" playlists that we never actually watch later. we consume like it's our full-time job.</p>
+  <p>and then we open a blank page to create something and our brain just... flatlines. nothing. the cursor blinks. we close the tab.</p>
+  <p>i was stuck in this loop for months. consuming content about content. watching videos about making videos. saving hooks about writing hooks. <strong>infinite recursion of inspiration with zero output.</strong></p>
+  <p>so i decided to break the cycle. i watched 4 videos that genuinely rewired how i think about creating. and instead of saving them to a notion folder called "inspo 🔥" — i turned them into this. an actual piece of content. my guide. my output.</p>
+  <p>this is me creating as much as i consume. ✦</p>
+</section>
+
+<!-- CHAPTER 01 -->
+<div class="chapter fade">
+  <span class="chapter-num">01</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-label">the consumption trap era</span>
+</div>
+
+<section class="fade">
+  <p class="era-title">the problem isn't discipline.<br>it's <span class="pop">identity.</span></p>
+  <p>you probably think you're "learning" when you binge content. you're not. you're hiding. learning feels productive without the risk of actually putting something out there and being judged for it.</p>
+  <p>and look — i get it. i spent weeks studying social media strategies from people with millions of followers. i had notes, screenshots, entire notion databases organized by color. but my own content? crickets. nothing published. zero output.</p>
+  <div class="callout">
+    <div class="callout-tag">✦ reality check</div>
+    <p>consuming content makes you feel like you're growing.<br>creating content is how you <strong>actually</strong> grow.<br>the gap between those two feelings is where most people stay forever.</p>
+  </div>
+  <p>so here's what i did: i picked 4 videos. watched them with intention. and instead of adding them to my infinite bookmark graveyard — i decided to turn them into something real.</p>
+  <p>this article is the output of my input. that's the whole game. ★</p>
+</section>
+
+<!-- CHAPTER 02 -->
+<div class="chapter fade">
+  <span class="chapter-num">02</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-label">the killer hooks era</span>
+</div>
+
+<section class="fade">
+  <p class="era-title">your content dies in the <span class="pop">first 2 seconds.</span></p>
+
+  <a href="https://www.youtube.com/watch?v=2byPP_9F0-Q&t=1s" target="_blank" rel="noopener noreferrer" class="vid-card">
+    <div class="icon">▶</div>
+    <div class="info">
+      <div class="title">give me 15 mins, and i'll make your hooks impossible to skip</div>
+      <div class="sub">kallaway · 634k views</div>
+    </div>
+  </a>
+
+  <p>kallaway breaks down something most people get wrong: they think a hook is just a catchy first line. nah. a hook is a <strong>curiosity loop</strong> — a gap between what the viewer knows and what they desperately want to know. and that gap has to itch.</p>
+
+  <div class="framework">
+    <h3>the hook autopsy 🔪</h3>
+    <div class="step"><span class="step-n">①</span><div class="step-t"><strong>delay.</strong> you take too long to get to the point. if the first 2 seconds don't communicate what the video is about, people are gone. nobody's waiting around for your "context."</div></div>
+    <div class="step"><span class="step-n">②</span><div class="step-t"><strong>confusion.</strong> your hook is trying to be clever but the viewer has no idea what they're watching. clarity beats creativity. every. single. time.</div></div>
+    <div class="step"><span class="step-n">③</span><div class="step-t"><strong>irrelevance.</strong> you hooked them but the hook has nothing to do with the actual content. clickbait works once. then your retention tanks forever.</div></div>
+    <div class="step"><span class="step-n">④</span><div class="step-t"><strong>disinterest.</strong> the topic just... doesn't matter to your audience. you can have the perfect hook formula but if nobody cares about the subject? doesn't matter.</div></div>
+  </div>
+
+  <p>the formula that actually works: <strong>context lean-in → scroll stop → contrarian snapback.</strong></p>
+  <p>think of it like you're on a highway going 70mph. the context lean-in is the billboard that makes you look. the scroll stop is the weird detail that makes you slow down. the contrarian snapback is the unexpected turn that makes you pull over completely.</p>
+  <p>but here's what hit me hardest: <strong>one hook isn't enough.</strong> you need to keep opening new curiosity loops throughout the video. every 15-30 seconds, a mini-hook that makes the viewer think "wait what?" — otherwise they're scrolling to the next thing.</p>
+
+  <div class="callout">
+    <div class="callout-tag">✦ nurslay's takeaway</div>
+    <p>stop writing hooks. start writing <strong>curiosity loops.</strong> a hook catches attention. a curiosity loop keeps it. the best creators don't hook once — they rehook every few seconds. that's why you can't stop watching their stuff.</p>
+  </div>
+</section>
+
+<!-- CHAPTER 03 -->
+<div class="chapter fade">
+  <span class="chapter-num">03</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-label">the storytelling era</span>
+</div>
+
+<section class="fade">
+  <p class="era-title">facts inform.<br><span class="pop">stories transform.</span></p>
+
+  <a href="https://www.youtube.com/watch?v=hNuAv-42jzY" target="_blank" rel="noopener noreferrer" class="vid-card">
+    <div class="icon">▶</div>
+    <div class="info">
+      <div class="title">give me 9min, and i'll improve your storytelling skills by 176%</div>
+      <div class="sub">philipp humm · 2.8m views</div>
+    </div>
+  </a>
+
+  <p>philipp humm's whole thing is stupidly simple but it hit different: <strong>zoom into the moment.</strong> don't summarize events. don't give a timeline. put the viewer inside the scene. make them feel like they're there.</p>
+  <p>most people tell stories like news anchors — "and then this happened, and then that happened." that's not storytelling. that's a recap. nobody cares about recaps.</p>
+
+  <div class="framework">
+    <h3>5 elements of a story that sticks ✦</h3>
+    <div class="step"><span class="step-n">①</span><div class="step-t"><strong>location.</strong> just name where you are. "i was sitting in the coffee shop" — the moment you say it, the viewer's brain builds the whole scene. you don't need to describe the wallpaper.</div></div>
+    <div class="step"><span class="step-n">②</span><div class="step-t"><strong>actions.</strong> what are you doing in that moment? "i opened my laptop and stared at the blank screen." skip the backstory. just drop us into the action.</div></div>
+    <div class="step"><span class="step-n">③</span><div class="step-t"><strong>inner dialogue.</strong> what are you thinking? "i thought — this is it. either i post this or i delete the app." this is what makes stories relatable. people hear their own voice in yours.</div></div>
+    <div class="step"><span class="step-n">④</span><div class="step-t"><strong>emotions.</strong> don't say "i was scared." show it. "my hands were shaking. i hit publish and immediately closed my phone." show emotions through actions, not adjectives.</div></div>
+    <div class="step"><span class="step-n">⑤</span><div class="step-t"><strong>dialogue.</strong> real conversations. "my friend said, 'just post it, no one's watching anyway.'" dialogue makes stories feel alive. not scripted.</div></div>
+  </div>
+
+  <div class="quote">
+    <p>"the goal of a good story is to zoom the listener into the moment and put them directly into the action."</p>
+    <span class="src">— philipp humm</span>
+  </div>
+
+  <p>the avg great story is only <strong>87 seconds</strong> long. you don't need a 10-minute monologue. you need 90 seconds of raw, vivid, zoomed-in storytelling that makes someone feel something real. that's it.</p>
+</section>
+
+<!-- CHAPTER 04 -->
+<div class="chapter fade">
+  <span class="chapter-num">04</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-label">the strategy era</span>
+</div>
+
+<section class="fade">
+  <p class="era-title">social media isn't hard.<br><span class="pop">it's misunderstood.</span></p>
+
+  <a href="https://www.youtube.com/watch?v=h_yQswsXwhY" target="_blank" rel="noopener noreferrer" class="vid-card">
+    <div class="icon">▶</div>
+    <div class="info">
+      <div class="title">social media isn't hard. it's misunderstood.</div>
+      <div class="sub">kallaway</div>
+    </div>
+  </a>
+
+  <a href="https://www.youtube.com/watch?v=dMZ-n2KSlxE" target="_blank" rel="noopener noreferrer" class="vid-card">
+    <div class="icon">▶</div>
+    <div class="info">
+      <div class="title">my actual social media strategy for 2026</div>
+      <div class="sub">alex hormozi · 735k views</div>
+    </div>
+  </a>
+
+  <p>kallaway dropped 5 uncommon truths. combined with hormozi's actual 2026 strategy, here's what nobody tells you:</p>
+
+  <div class="framework">
+    <h3>the uncomfortable truths ★</h3>
+    <div class="step"><span class="step-n">①</span><div class="step-t"><strong>social media is not social.</strong> it's media first, social second. you're not "connecting with friends." you're competing for attention in the most brutal marketplace ever built. treat it like media production. not a diary.</div></div>
+    <div class="step"><span class="step-n">②</span><div class="step-t"><strong>virality is a trap.</strong> one viral post doesn't build a business. consistency does. 50 posts that each get 10k views > 1 post that gets 500k. the compound effect of showing up is what actually wins.</div></div>
+    <div class="step"><span class="step-n">③</span><div class="step-t"><strong>fish where the fish are.</strong> stop trying to make every platform work. find where YOUR audience lives and go all in. hormozi tests ideas on twitter first, then expands to video once he knows what resonates.</div></div>
+    <div class="step"><span class="step-n">④</span><div class="step-t"><strong>build ecosystems, not islands.</strong> short form feeds long form. long form feeds newsletter. newsletter feeds product. every piece of content should connect to the next. isolated content dies fast.</div></div>
+    <div class="step"><span class="step-n">⑤</span><div class="step-t"><strong>value doesn't accrue at the media layer.</strong> views don't pay bills. building something behind the content — a product, a community, a service — is what turns content into a career. media is the funnel, not the business.</div></div>
+  </div>
+
+  <p>hormozi's SPCL framework — <strong>status, power, credibility, likeness</strong> — is how he decides what to post. every piece of content should do at least one: raise your perceived status, demonstrate your expertise, build credibility through proof, or make people like you more.</p>
+  <p>simple. but how many of your posts actually do any of these? exactly. ✦</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n">80%</div><div class="l">results come from hooks</div></div>
+    <div class="stat"><div class="n">87s</div><div class="l">avg great story length</div></div>
+    <div class="stat"><div class="n">4s</div><div class="l">short form death timer</div></div>
+  </div>
+</section>
+
+<!-- CHAPTER 05 -->
+<div class="chapter fade">
+  <span class="chapter-num">05</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-label">the system era</span>
+</div>
+
+<section class="fade">
+  <p class="era-title">consume with <span class="pop">intent.</span><br>create with <span class="pop">speed.</span></p>
+
+  <p>ok so here's the actual system i'm building for myself. this whole article is the proof of concept — i consumed 4 videos and turned them into this. here's how you do the same:</p>
+
+  <div class="framework">
+    <h3>the 1:1 creation system ⚡</h3>
+    <div class="step"><span class="step-n">①</span><div class="step-t"><strong>consume with a pen, not a pillow.</strong> when you watch something, don't just vibe with it. take notes. capture the key insight in one sentence. if you can't summarize it — you didn't understand it.</div></div>
+    <div class="step"><span class="step-n">②</span><div class="step-t"><strong>the 24-hour rule.</strong> if you don't create something from what you consumed within 24 hours, it's gone. your brain forgets. the inspiration fades. speed is the hack nobody talks about.</div></div>
+    <div class="step"><span class="step-n">③</span><div class="step-t"><strong>add your lens.</strong> nobody wants another summary. the internet has enough of those. what's YOUR take? your experience? your weird angle? that's what makes content yours. that's what makes it hit.</div></div>
+    <div class="step"><span class="step-n">④</span><div class="step-t"><strong>format for the platform.</strong> a twitter thread ≠ a youtube video ≠ a blog post. same ideas, different packaging. match the format to where your people are.</div></div>
+    <div class="step"><span class="step-n">⑤</span><div class="step-t"><strong>publish before it's perfect.</strong> the best content is content that exists. done > perfect. your 8th post will be better than your 1st. your 80th will be better than your 8th. but only if you hit publish.</div></div>
+  </div>
+
+  <div class="pills">
+    <span class="pill on">watch → write</span>
+    <span class="pill on">read → thread</span>
+    <span class="pill on">listen → post</span>
+    <span class="pill dead">save for later</span>
+    <span class="pill dead">add to notion</span>
+    <span class="pill dead">screenshot & forget</span>
+  </div>
+
+  <p>first three = creation. last three = organized consumption pretending to be productivity. you know which camp you've been in. i know which camp i've been in. time to switch. ★</p>
+</section>
+
+<!-- CHAPTER 06 -->
+<div class="chapter fade">
+  <span class="chapter-num">06</span>
+  <span class="chapter-line"></span>
+  <span class="chapter-label">the point</span>
+</div>
+
+<section class="fade">
+  <p class="era-title">this article <span class="pop">is</span> the article.</p>
+  <p>i didn't just "learn" from those 4 videos. i turned them into something. and now you're reading that something. that's literally the whole point.</p>
+  <p>the best way to learn is to teach. the best way to consume is to create. the best way to grow is to put your work out there — imperfect, messy, real.</p>
+  <p>i'm not saying stop consuming. i'm saying <strong>match it.</strong> every video you watch, write something. every podcast you listen to, turn it into a post. every book you read, share one idea from it.</p>
+  <p>the internet doesn't need another consumer. it needs more creators who are willing to be bad at it before they get good at it.</p>
+
+  <div class="quote">
+    <p>"you either get an epic outcome or an epic story. both mean you win."</p>
+    <span class="src">— alex hormozi</span>
+  </div>
+
+  <p>so here's my challenge to you: take whatever you consumed today — this article, a video, a tweet, a random thread — and make something from it. a post, a thread, a story. doesn't matter what format. doesn't matter if it's good.</p>
+  <p>just create as much as you consume.</p>
+  <p>start today. start ugly. start now. ✦</p>
+</section>
+
+<section class="cta fade">
+  <h2>now go <span class="pop">make something.</span></h2>
+  <p>you just consumed this whole thing. the clock is ticking. what are you going to create from it? ★</p>
+</section>
+
+<footer class="foot fade">
+  <div class="sig">★ xoxo, nurslay ★</div>
+  <div class="sub">made with ♡ & too much screen time · 2026</div>
+  <a href="../blog/" class="back-to-blog">← back to all posts</a>
+</footer>
+
+</div>
+</div>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
